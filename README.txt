@@ -1,0 +1,1 @@
+A very simple RSSReader for the iPhone OS. Really just a learning project.
