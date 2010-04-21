@@ -6,6 +6,12 @@
 //  Copyright 2010 nothoo All rights reserved.
 //
 
+@class GoogleAuthenticate;
+@protocol GoogleAuthenticateDelegate<NSObject>
+- (void) authenticationComplete:(GoogleAuthenticate*) ga;
+- (void) authenticationFailed:(GoogleAuthenticate*) ga;
+@end
+
 @interface GoogleAuthenticate : UIViewController {
 
 	NSString *userName;
@@ -19,6 +25,7 @@
 	@private
 	NSMutableData *responseData;
 	NSURLConnection *conn;
+	id<GoogleAuthenticateDelegate> delegate;
 }
 
 - (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword;
@@ -36,5 +43,5 @@
 @property(nonatomic, retain) NSString *failureDescription;
 @property(nonatomic, retain) NSMutableData *responseData;
 @property(nonatomic, retain) NSURLConnection *conn;
-
+@property(assign) id<GoogleAuthenticateDelegate> delegate;
 @end

@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RootViewController.m</string>
+								<string>AuthenticationViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,21 +326,22 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RootViewController.m</string>
+										<string>AuthenticationViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1F41D444117E9C5E00756AB5</string>
+										<string>1F41D493117F4FA600756AB5</string>
 										<key>history</key>
 										<array>
 											<string>1F7316BB11754D800061DB37</string>
-											<string>1F73172E117556B20061DB37</string>
 											<string>1F73173E117557D50061DB37</string>
 											<string>1F73174A1175588D0061DB37</string>
-											<string>1F41D38B117E8E1300756AB5</string>
 											<string>1F41D41A117E9A9E00756AB5</string>
-											<string>1F41D41B117E9A9E00756AB5</string>
-											<string>1F41D436117E9B3E00756AB5</string>
+											<string>1F41D472117F4E7F00756AB5</string>
+											<string>1F41D487117F4F3D00756AB5</string>
+											<string>1F41D490117F4FA600756AB5</string>
+											<string>1F41D491117F4FA600756AB5</string>
+											<string>1F41D492117F4FA600756AB5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -538,7 +539,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1F41D445117E9C5E00756AB5</string>
+		<string>1F41D494117F4FA600756AB5</string>
 		<string>1F41D343117E876800756AB5</string>
 		<string>1F41D338117E86AD00756AB5</string>
 		<string>1F41D334117E865900756AB5</string>

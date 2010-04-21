@@ -2,16 +2,16 @@
 {
 	086F086C1153FB1700D12F62 /* AuthenticationViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 752}}";
-			sepNavSelRange = "{905, 0}";
-			sepNavVisRange = "{244, 1096}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 720}}";
+			sepNavSelRange = "{1302, 0}";
+			sepNavVisRange = "{205, 1098}";
 		};
 	};
 	086F086D1153FB1700D12F62 /* AuthenticationViewController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1113, 1552}}";
-			sepNavSelRange = "{486, 61}";
-			sepNavVisRange = "{146, 1006}";
+			sepNavSelRange = "{747, 0}";
+			sepNavVisRange = "{301, 863}";
 			sepNavWindowFrame = "{{15, 4}, {1060, 874}}";
 		};
 	};
@@ -130,7 +130,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 15";
 		rLen = 0;
-		rLoc = 399;
+		rLoc = 392;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 0;
@@ -255,8 +255,8 @@
 		isa = PBXTextBookmark;
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
-		rLen = 61;
-		rLoc = 1896;
+		rLen = 0;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 1031;
@@ -286,8 +286,8 @@
 		comments = "'cookie' undeclared (first use in this function)";
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 67;
+		rLen = 0;
+		rLoc = 32;
 		rType = 1;
 	};
 	1F41D352117E891000756AB5 /* PBXTextBookmark */ = {
@@ -295,7 +295,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 544;
 		vrLoc = 1469;
@@ -305,7 +305,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 46";
 		rLen = 37;
-		rLoc = 1276;
+		rLoc = 1187;
 		rType = 0;
 		vrLen = 1140;
 		vrLoc = 244;
@@ -325,8 +325,8 @@
 		comments = "'cookie' undeclared (first use in this function)";
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 67;
+		rLen = 0;
+		rLoc = 32;
 		rType = 1;
 	};
 	1F41D35A117E891300756AB5 /* PBXTextBookmark */ = {
@@ -334,7 +334,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1020;
 		vrLoc = 1263;
@@ -344,7 +344,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 544;
 		vrLoc = 1469;
@@ -374,7 +374,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1023;
 		vrLoc = 1260;
@@ -384,7 +384,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 47";
 		rLen = 0;
-		rLoc = 1249;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1028;
 		vrLoc = 727;
@@ -404,7 +404,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 61";
 		rLen = 0;
-		rLoc = 1959;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 943;
 		vrLoc = 1095;
@@ -414,7 +414,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 61";
 		rLen = 0;
-		rLoc = 1959;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 941;
 		vrLoc = 1095;
@@ -424,7 +424,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 38";
 		rLen = 0;
-		rLoc = 905;
+		rLoc = 916;
 		rType = 0;
 		vrLen = 1096;
 		vrLoc = 244;
@@ -434,7 +434,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 53";
 		rLen = 0;
-		rLoc = 1571;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1031;
 		vrLoc = 1095;
@@ -444,7 +444,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 53";
 		rLen = 0;
-		rLoc = 1571;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1004;
 		vrLoc = 1122;
@@ -454,7 +454,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 51";
 		rLen = 0;
-		rLoc = 1603;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 929;
 		vrLoc = 1095;
@@ -464,7 +464,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 50";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 906;
 		vrLoc = 1152;
@@ -484,7 +484,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 50";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 906;
 		vrLoc = 1152;
@@ -494,7 +494,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 50";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 975;
 		vrLoc = 1122;
@@ -504,7 +504,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 54";
 		rLen = 0;
-		rLoc = 1560;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 1122;
@@ -514,7 +514,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 67";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 520;
 		vrLoc = 1118;
@@ -524,7 +524,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 62";
 		rLen = 0;
-		rLoc = 1571;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 988;
 		vrLoc = 1162;
@@ -534,7 +534,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 74";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 611;
 		vrLoc = 1095;
@@ -554,7 +554,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 62";
 		rLen = 0;
-		rLoc = 1571;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 988;
 		vrLoc = 1162;
@@ -564,7 +564,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 59";
 		rLen = 0;
-		rLoc = 1569;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 1165;
@@ -574,7 +574,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 57";
 		rLen = 0;
-		rLoc = 1569;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1038;
 		vrLoc = 1223;
@@ -584,7 +584,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 60";
 		rLen = 0;
-		rLoc = 1569;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1085;
 		vrLoc = 1249;
@@ -594,7 +594,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 54";
 		rLen = 0;
-		rLoc = 1527;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 918;
 		vrLoc = 1286;
@@ -604,7 +604,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 50";
 		rLen = 0;
-		rLoc = 1349;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 945;
 		vrLoc = 1249;
@@ -621,7 +621,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 68";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 520;
 		vrLoc = 936;
@@ -631,7 +631,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 56";
 		rLen = 0;
-		rLoc = 1569;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 146;
@@ -678,7 +678,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 68";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 535;
 		vrLoc = 1122;
@@ -698,7 +698,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 68";
 		rLen = 0;
-		rLoc = 1954;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 1122;
@@ -737,7 +737,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 18";
 		rLen = 61;
-		rLoc = 486;
+		rLoc = 479;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 146;
@@ -809,11 +809,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
 		functionName = "-parserDidEndDocument:";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 97;
 		location = RSSReader;
-		modificationTime = 293510066.743267;
+		modificationTime = 293556031.190692;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -887,6 +887,284 @@
 		vrLen = 906;
 		vrLoc = 1979;
 	};
+	1F41D44E117F4A6C00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 16";
+		rLen = 0;
+		rLoc = 340;
+		rType = 0;
+		vrLen = 668;
+		vrLoc = 212;
+	};
+	1F41D44F117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 79";
+		rLen = 0;
+		rLoc = 2460;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 2139;
+	};
+	1F41D450117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
+		name = "AuthenticationViewController.h: 40";
+		rLen = 0;
+		rLoc = 1150;
+		rType = 0;
+		vrLen = 1025;
+		vrLoc = 205;
+	};
+	1F41D451117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */;
+		name = "GoogleAuthenticate.h: 12";
+		rLen = 56;
+		rLoc = 265;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 0;
+	};
+	1F41D452117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 70";
+		rLen = 0;
+		rLoc = 1950;
+		rType = 0;
+		vrLen = 1053;
+		vrLoc = 1075;
+	};
+	1F41D453117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 46";
+		rLen = 0;
+		rLoc = 1985;
+		rType = 0;
+		vrLen = 1557;
+		vrLoc = 577;
+	};
+	1F41D454117F4A7100756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 10";
+		rLen = 0;
+		rLoc = 556;
+		rType = 0;
+		vrLen = 1366;
+		vrLoc = 1230;
+	};
+	1F41D471117F4E7F00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 116";
+		rLen = 0;
+		rLoc = 4365;
+		rType = 0;
+		vrLen = 843;
+		vrLoc = 3585;
+	};
+	1F41D472117F4E7F00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */;
+		name = "GoogleAuthenticate.h: 46";
+		rLen = 0;
+		rLoc = 1264;
+		rType = 0;
+		vrLen = 953;
+		vrLoc = 327;
+	};
+	1F41D473117F4E7F00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
+		name = "AuthenticationViewController.h: 43";
+		rLen = 0;
+		rLoc = 1302;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 206;
+	};
+	1F41D474117F4E7F00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 24";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 191;
+	};
+	1F41D475117F4E7F00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 683;
+		vrLoc = 1709;
+	};
+	1F41D479117F4EEE00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 898;
+		vrLoc = 301;
+	};
+	1F41D47A117F4EEE00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 116";
+		rLen = 0;
+		rLoc = 4365;
+		rType = 0;
+		vrLen = 844;
+		vrLoc = 3584;
+	};
+	1F41D47B117F4EEE00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 70";
+		rLen = 0;
+		rLoc = 2731;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 2176;
+	};
+	1F41D47F117F4F1C00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 110";
+		rLen = 0;
+		rLoc = 4020;
+		rType = 0;
+		vrLen = 868;
+		vrLoc = 3642;
+	};
+	1F41D480117F4F1C00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 897;
+		vrLoc = 302;
+	};
+	1F41D481117F4F1C00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 831;
+	};
+	1F41D483117F4F3B00756AB5 /* GoogleAuthenticate.m:120 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		functionName = "-connectionDidFinishLoading:";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 120;
+		location = RSSReader;
+		modificationTime = 293556036.514863;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	1F41D487117F4F3D00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
+		name = "AuthenticationViewController.h: 43";
+		rLen = 0;
+		rLoc = 1302;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 205;
+	};
+	1F41D488117F4F3D00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 913;
+		vrLoc = 861;
+	};
+	1F41D489117F4F3D00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 110";
+		rLen = 0;
+		rLoc = 4020;
+		rType = 0;
+		vrLen = 868;
+		vrLoc = 3642;
+	};
+	1F41D48A117F4F3D00756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 110";
+		rLen = 0;
+		rLoc = 4020;
+		rType = 0;
+		vrLen = 867;
+		vrLoc = 3643;
+	};
+	1F41D490117F4FA600756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */;
+		name = "GoogleAuthenticate.m: 120";
+		rLen = 0;
+		rLoc = 4326;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 3643;
+	};
+	1F41D491117F4FA600756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 79";
+		rLen = 0;
+		rLoc = 2460;
+		rType = 0;
+		vrLen = 922;
+		vrLoc = 3069;
+	};
+	1F41D492117F4FA600756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 92";
+		rLen = 0;
+		rLoc = 2412;
+		rType = 0;
+		vrLen = 913;
+		vrLoc = 861;
+	};
+	1F41D493117F4FA600756AB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
+		name = "AuthenticationViewController.m: 26";
+		rLen = 0;
+		rLoc = 747;
+		rType = 0;
+		vrLen = 863;
+		vrLoc = 301;
+	};
 	1F73169D11754BA30061DB37 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected specifier-qualifier-list before 'AuthenticationViewController'";
@@ -910,7 +1188,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 41";
 		rLen = 0;
-		rLoc = 1802;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 679;
 		vrLoc = 804;
@@ -950,7 +1228,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 29";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 931;
 		vrLoc = 52;
@@ -1000,7 +1278,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 41";
 		rLen = 0;
-		rLoc = 1802;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 645;
 		vrLoc = 804;
@@ -1050,7 +1328,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 38";
 		rLen = 0;
-		rLoc = 1339;
+		rLoc = 1303;
 		rType = 0;
 		vrLen = 917;
 		vrLoc = 87;
@@ -1060,7 +1338,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 42";
 		rLen = 0;
-		rLoc = 1782;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 879;
 		vrLoc = 601;
@@ -1100,7 +1378,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 15";
 		rLen = 0;
-		rLoc = 399;
+		rLoc = 392;
 		rType = 0;
 		vrLen = 953;
 		vrLoc = 0;
@@ -1110,7 +1388,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 22";
 		rLen = 0;
-		rLoc = 709;
+		rLoc = 737;
 		rType = 0;
 		vrLen = 917;
 		vrLoc = 87;
@@ -1120,7 +1398,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 37";
 		rLen = 0;
-		rLoc = 1249;
+		rLoc = 1160;
 		rType = 0;
 		vrLen = 917;
 		vrLoc = 87;
@@ -1150,7 +1428,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 35";
 		rLen = 9;
-		rLoc = 1128;
+		rLoc = 1139;
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 87;
@@ -1160,7 +1438,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 49";
 		rLen = 0;
-		rLoc = 1580;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1003;
 		vrLoc = 867;
@@ -1170,7 +1448,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 49";
 		rLen = 0;
-		rLoc = 1571;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 1008;
@@ -1190,7 +1468,7 @@
 		comments = "'SID' undeclared (first use in this function)";
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		rLen = 0;
-		rLoc = 55;
+		rLoc = 32;
 		rType = 1;
 	};
 	1F7316DA117552980061DB37 /* PBXTextBookmark */ = {
@@ -1198,7 +1476,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 47";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 686;
 		vrLoc = 1171;
@@ -1218,7 +1496,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 35";
 		rLen = 9;
-		rLoc = 1128;
+		rLoc = 1139;
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 87;
@@ -1228,7 +1506,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 47";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 1008;
@@ -1238,7 +1516,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 47";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 1009;
@@ -1248,7 +1526,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 17";
 		rLen = 0;
-		rLoc = 402;
+		rLoc = 395;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 87;
@@ -1298,7 +1576,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 17";
 		rLen = 0;
-		rLoc = 402;
+		rLoc = 395;
 		rType = 0;
 		vrLen = 603;
 		vrLoc = 146;
@@ -1308,7 +1586,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 35";
 		rLen = 9;
-		rLoc = 1128;
+		rLoc = 1139;
 		rType = 0;
 		vrLen = 910;
 		vrLoc = 149;
@@ -1318,7 +1596,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1003;
 		vrLoc = 825;
@@ -1358,7 +1636,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 58";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1003;
 		vrLoc = 825;
@@ -1368,7 +1646,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 53";
 		rLen = 0;
-		rLoc = 1803;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 938;
 		vrLoc = 890;
@@ -1378,7 +1656,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 17";
 		rLen = 0;
-		rLoc = 402;
+		rLoc = 395;
 		rType = 0;
 		vrLen = 651;
 		vrLoc = 149;
@@ -1406,7 +1684,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 52";
 		rLen = 0;
-		rLoc = 1774;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 890;
@@ -1456,7 +1734,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 52";
 		rLen = 0;
-		rLoc = 1774;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 579;
@@ -1486,7 +1764,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 35";
 		rLen = 9;
-		rLoc = 1128;
+		rLoc = 1139;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 146;
@@ -1516,7 +1794,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 52";
 		rLen = 0;
-		rLoc = 1774;
+		rLoc = 857;
 		rType = 0;
 		vrLen = 1042;
 		vrLoc = 1250;
@@ -1526,7 +1804,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 63";
 		rLen = 0;
-		rLoc = 2019;
+		rLoc = 944;
 		rType = 0;
 		vrLen = 956;
 		vrLoc = 1253;
@@ -1536,7 +1814,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 63";
 		rLen = 0;
-		rLoc = 2019;
+		rLoc = 944;
 		rType = 0;
 		vrLen = 1008;
 		vrLoc = 1253;
@@ -1643,7 +1921,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 63";
 		rLen = 0;
-		rLoc = 2019;
+		rLoc = 944;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 146;
@@ -1680,9 +1958,16 @@
 	};
 	1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 656}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 757}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 768}}";
+			sepNavSelRange = "{1264, 0}";
+			sepNavVisRange = "{327, 953}";
+		};
+	};
+	1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 2240}}";
+			sepNavSelRange = "{4326, 0}";
+			sepNavVisRange = "{3643, 873}";
 		};
 	};
 	1FA801E2116ED6020050E62B /* PBXTextBookmark */ = {
@@ -1690,7 +1975,7 @@
 		fRef = 086F086C1153FB1700D12F62 /* AuthenticationViewController.h */;
 		name = "AuthenticationViewController.h: 21";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 676;
 		rType = 0;
 		vrLen = 1021;
 		vrLoc = 38;
@@ -1700,7 +1985,7 @@
 		fRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */;
 		name = "AuthenticationViewController.m: 17";
 		rLen = 0;
-		rLoc = 589;
+		rLoc = 582;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 0;
@@ -1744,9 +2029,9 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1356, 3600}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1356, 3728}}";
 			sepNavSelRange = "{2460, 0}";
-			sepNavVisRange = "{1979, 906}";
+			sepNavVisRange = "{3069, 922}";
 			sepNavWindowFrame = "{{15, 4}, {1060, 874}}";
 		};
 	};
@@ -1759,6 +2044,7 @@
 		);
 		breakpoints = (
 			1F41D429117E9B1800756AB5 /* RootViewController.m:97 */,
+			1F41D483117F4F3B00756AB5 /* GoogleAuthenticate.m:120 */,
 		);
 		codeSenseManager = 1F3975341169740E00969A04 /* Code sense */;
 		executables = (
@@ -1898,6 +2184,32 @@
 			1F41D43B117E9B9400756AB5 /* PBXTextBookmark */ = 1F41D43B117E9B9400756AB5 /* PBXTextBookmark */;
 			1F41D43E117E9BC300756AB5 /* PBXTextBookmark */ = 1F41D43E117E9BC300756AB5 /* PBXTextBookmark */;
 			1F41D444117E9C5E00756AB5 /* PBXTextBookmark */ = 1F41D444117E9C5E00756AB5 /* PBXTextBookmark */;
+			1F41D44E117F4A6C00756AB5 /* PBXTextBookmark */ = 1F41D44E117F4A6C00756AB5 /* PBXTextBookmark */;
+			1F41D44F117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D44F117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D450117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D450117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D451117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D451117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D452117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D452117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D453117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D453117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D454117F4A7100756AB5 /* PBXTextBookmark */ = 1F41D454117F4A7100756AB5 /* PBXTextBookmark */;
+			1F41D471117F4E7F00756AB5 /* PBXTextBookmark */ = 1F41D471117F4E7F00756AB5 /* PBXTextBookmark */;
+			1F41D472117F4E7F00756AB5 /* PBXTextBookmark */ = 1F41D472117F4E7F00756AB5 /* PBXTextBookmark */;
+			1F41D473117F4E7F00756AB5 /* PBXTextBookmark */ = 1F41D473117F4E7F00756AB5 /* PBXTextBookmark */;
+			1F41D474117F4E7F00756AB5 /* PBXTextBookmark */ = 1F41D474117F4E7F00756AB5 /* PBXTextBookmark */;
+			1F41D475117F4E7F00756AB5 /* PBXTextBookmark */ = 1F41D475117F4E7F00756AB5 /* PBXTextBookmark */;
+			1F41D479117F4EEE00756AB5 /* PBXTextBookmark */ = 1F41D479117F4EEE00756AB5 /* PBXTextBookmark */;
+			1F41D47A117F4EEE00756AB5 /* PBXTextBookmark */ = 1F41D47A117F4EEE00756AB5 /* PBXTextBookmark */;
+			1F41D47B117F4EEE00756AB5 /* PBXTextBookmark */ = 1F41D47B117F4EEE00756AB5 /* PBXTextBookmark */;
+			1F41D47F117F4F1C00756AB5 /* PBXTextBookmark */ = 1F41D47F117F4F1C00756AB5 /* PBXTextBookmark */;
+			1F41D480117F4F1C00756AB5 /* PBXTextBookmark */ = 1F41D480117F4F1C00756AB5 /* PBXTextBookmark */;
+			1F41D481117F4F1C00756AB5 /* PBXTextBookmark */ = 1F41D481117F4F1C00756AB5 /* PBXTextBookmark */;
+			1F41D487117F4F3D00756AB5 /* PBXTextBookmark */ = 1F41D487117F4F3D00756AB5 /* PBXTextBookmark */;
+			1F41D488117F4F3D00756AB5 /* PBXTextBookmark */ = 1F41D488117F4F3D00756AB5 /* PBXTextBookmark */;
+			1F41D489117F4F3D00756AB5 /* PBXTextBookmark */ = 1F41D489117F4F3D00756AB5 /* PBXTextBookmark */;
+			1F41D48A117F4F3D00756AB5 /* PBXTextBookmark */ = 1F41D48A117F4F3D00756AB5 /* PBXTextBookmark */;
+			1F41D490117F4FA600756AB5 /* PBXTextBookmark */ = 1F41D490117F4FA600756AB5 /* PBXTextBookmark */;
+			1F41D491117F4FA600756AB5 /* PBXTextBookmark */ = 1F41D491117F4FA600756AB5 /* PBXTextBookmark */;
+			1F41D492117F4FA600756AB5 /* PBXTextBookmark */ = 1F41D492117F4FA600756AB5 /* PBXTextBookmark */;
+			1F41D493117F4FA600756AB5 /* PBXTextBookmark */ = 1F41D493117F4FA600756AB5 /* PBXTextBookmark */;
 			1F73169D11754BA30061DB37 = 1F73169D11754BA30061DB37 /* PBXTextBookmark */;
 			1F73169E11754BA30061DB37 = 1F73169E11754BA30061DB37 /* PBXTextBookmark */;
 			1F7316AA11754BF00061DB37 = 1F7316AA11754BF00061DB37 /* PBXTextBookmark */;

@@ -12,7 +12,7 @@
 
 @implementation AuthenticationViewController
 
-@synthesize ga, timer, msg, usernameField, passwordField, sid, authenticated, sidCookie, delegate;
+@synthesize msg, usernameField, passwordField, sid, authenticated, sidCookie, delegate, ga;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -22,53 +22,15 @@
 
 - (IBAction) login:(id)sender {
 	self.ga = [[GoogleAuthenticate alloc] initWithUserName:usernameField.text password:passwordField.text];
+	self.ga.delegate = self;
 	
 	[self.msg setText:@"Authenticating..."];
 	
 	[activityIndicator startAnimating];
 	[self.ga authenticate];
-	
-	// set up the timer to wait for completion of authentication 
-	self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(loginDone:) userInfo:nil repeats:YES];
 }
 
--(void)loginDone: (NSTimer*) theTimer {
-	NSLog(@"loginDone");
-	
-	if (!self.ga.completed) {
-		NSLog(@"Still waiting...");
-		return;
-	}
-	
-	[theTimer invalidate];
-	
-	if (self.ga.authenticated) {
-		self.sid = self.ga.SID;
-		
-		NSDictionary* cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-										  @"SID", NSHTTPCookieName,
-										  @".google.com", NSHTTPCookieDomain, 
-										  @"/", NSHTTPCookiePath, 
-										  @"1600000000", NSHTTPCookieExpires, 
-										  self.ga.SID, NSHTTPCookieValue,
-										  nil];
-		
-		sidCookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
-		if (!sidCookie) {
-			NSLog(@"Failed to create cookie.");
-		}
-
-		[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:sidCookie];
-		
-		self.authenticated = YES;
-	} else {
-		[self.msg setText:self.ga.failureReason];
-	}
-	[activityIndicator stopAnimating];
-	[delegate authenticationComplete:self SIDCookie:sidCookie];
-	
-}
-
+#pragma mark delegate methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField	{
 	[textField resignFirstResponder];
 	if (textField == passwordField) {
@@ -79,6 +41,38 @@
 	
 	return NO;
 }
+
+- (void) authenticationComplete:(GoogleAuthenticate*) ga {
+	NSLog(@"authenticationComplete");
+
+	self.sid = self.ga.SID;
+	
+	NSDictionary* cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
+									  @"SID", NSHTTPCookieName,
+									  @".google.com", NSHTTPCookieDomain, 
+									  @"/", NSHTTPCookiePath, 
+									  @"1600000000", NSHTTPCookieExpires, 
+									  self.ga.SID, NSHTTPCookieValue,
+									  nil];
+	
+	sidCookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+	if (!sidCookie) {
+		NSLog(@"Failed to create cookie.");
+	}
+	
+	[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:sidCookie];
+	
+	self.authenticated = YES;
+	[activityIndicator stopAnimating];
+	[delegate authenticationComplete:self SIDCookie:sidCookie];
+}
+
+- (void) authenticationFailed:(GoogleAuthenticate*) ga {
+	NSLog(@"authenticationFailed");
+	[self.msg setText:self.ga.failureReason];
+	[activityIndicator stopAnimating];
+}
+#pragma mark end delegate methods
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -96,6 +90,5 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

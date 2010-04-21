@@ -15,7 +15,7 @@
 - (void) authenticationComplete:(AuthenticationViewController*) avc SIDCookie:(NSHTTPCookie*) cookie;
 @end
 
-@interface AuthenticationViewController : UIViewController<UITextFieldDelegate> {
+@interface AuthenticationViewController : UIViewController<UITextFieldDelegate, GoogleAuthenticateDelegate> {
 	
 	IBOutlet UITextField *usernameField;
 	IBOutlet UITextField *passwordField;
@@ -27,9 +27,8 @@
 	bool authenticated;
 	
 	@private
-	NSTimer *timer;
-	GoogleAuthenticate *ga;
 	id<AuthenticationViewControllerDelegate> delegate;
+	GoogleAuthenticate* ga;
 }
 
 - (IBAction) login:(id)sender;
@@ -39,9 +38,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) NSString *sid;
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;
-@property (nonatomic, retain) NSTimer *timer;
-@property (nonatomic, retain) GoogleAuthenticate *ga;
 @property bool authenticated;
 @property (assign) id<AuthenticationViewControllerDelegate> delegate;
+@property(nonatomic, retain) GoogleAuthenticate* ga;
 
 @end
