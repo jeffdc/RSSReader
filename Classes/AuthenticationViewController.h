@@ -9,21 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "GoogleAuthenticate.h"
 
-@interface AuthenticationViewController : UIViewController<UITextFieldDelegate> {
+@class AuthenticationViewController;
 
+@protocol AuthenticationViewControllerDelegate<NSObject>
+- (void) authenticationComplete:(AuthenticationViewController*) avc SIDCookie:(NSHTTPCookie*) cookie;
+@end
+
+@interface AuthenticationViewController : UIViewController<UITextFieldDelegate> {
+	
 	IBOutlet UITextField *usernameField;
 	IBOutlet UITextField *passwordField;
 	IBOutlet UILabel *msg;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
 
 	NSString *sid;
-	NSMutableDictionary *cookieProperties;
 	NSHTTPCookie *sidCookie;
 	bool authenticated;
 	
 	@private
 	NSTimer *timer;
 	GoogleAuthenticate *ga;
+	id<AuthenticationViewControllerDelegate> delegate;
 }
 
 - (IBAction) login:(id)sender;
@@ -36,5 +42,6 @@
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) GoogleAuthenticate *ga;
 @property bool authenticated;
+@property (assign) id<AuthenticationViewControllerDelegate> delegate;
 
 @end

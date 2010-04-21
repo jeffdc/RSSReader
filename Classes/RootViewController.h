@@ -8,13 +8,14 @@
 
 #import "AuthenticationViewController.h";
 
-@interface RootViewController : UITableViewController {
+@interface RootViewController : UITableViewController<AuthenticationViewControllerDelegate> {
 	NSMutableData *mainXMLData;
 	//	NSURLConnection *conn;
 	AuthenticationViewController *authController;
 	NSMutableArray *feedTitles;
 	NSMutableString *currentTitle;
 	NSHTTPCookie *sidCookie;
+	bool foundTitle;
 }
 
 -(void)startParsingXML;
@@ -25,4 +26,5 @@
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;
 @property (nonatomic, retain) AuthenticationViewController *authController;
 @property (nonatomic, retain) NSMutableData *mainXMLData;
+@property bool foundTitle;
 @end

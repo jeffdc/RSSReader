@@ -12,7 +12,7 @@
 
 @implementation AuthenticationViewController
 
-@synthesize ga, timer, msg, usernameField, passwordField, sid, authenticated, sidCookie;
+@synthesize ga, timer, msg, usernameField, passwordField, sid, authenticated, sidCookie, delegate;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,19 +43,29 @@
 	[theTimer invalidate];
 	
 	if (self.ga.authenticated) {
-		NSLog(@"SID = '%@'", self.ga.SID);
+		self.sid = self.ga.SID;
 		
-		cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:self.ga.SID , NSHTTPCookieName, @".google.com", 
-							NSHTTPCookieDomain, @"/", NSHTTPCookiePath, @"1600000000", NSHTTPCookieExpires, nil];
+		NSDictionary* cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
+										  @"SID", NSHTTPCookieName,
+										  @".google.com", NSHTTPCookieDomain, 
+										  @"/", NSHTTPCookiePath, 
+										  @"1600000000", NSHTTPCookieExpires, 
+										  self.ga.SID, NSHTTPCookieValue,
+										  nil];
+		
 		sidCookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+		if (!sidCookie) {
+			NSLog(@"Failed to create cookie.");
+		}
+
 		[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:sidCookie];
 		
 		self.authenticated = YES;
-		[self dismissModalViewControllerAnimated:YES];
 	} else {
 		[self.msg setText:self.ga.failureReason];
 	}
 	[activityIndicator stopAnimating];
+	[delegate authenticationComplete:self SIDCookie:sidCookie];
 	
 }
 

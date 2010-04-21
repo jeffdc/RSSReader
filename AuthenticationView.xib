@@ -84,7 +84,7 @@
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUIText"/>
+						<string key="IBUIText">jeffc666@gmail.com</string>
 						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">abc@example.com</string>
 						<object class="NSColor" key="IBUITextColor">
@@ -94,7 +94,6 @@
 								<int key="NSID">2</int>
 							</object>
 						</object>
-						<bool key="IBUIClearsOnBeginEditing">YES</bool>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -430,6 +429,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityIndicator</string>
+							<string>delegate</string>
 							<string>msg</string>
 							<string>passwordField</string>
 							<string>usernameField</string>
@@ -437,6 +437,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIActivityIndicatorView</string>
+							<string>id</string>
 							<string>UILabel</string>
 							<string>UITextField</string>
 							<string>UITextField</string>

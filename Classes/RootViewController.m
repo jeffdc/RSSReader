@@ -11,7 +11,7 @@
 
 @implementation RootViewController
 
-@synthesize feedTitles, currentTitle, sidCookie, authController, mainXMLData;
+@synthesize feedTitles, currentTitle, sidCookie, authController, mainXMLData, foundTitle;
 
 -(void)getXML {
 	NSURL *getXMLURL = [NSURL URLWithString:@"http://www.google.com/reader/atom/"];
@@ -71,29 +71,38 @@
 
 
 -(void)parserDidStartDocument:(NSXMLParser *)parser {
-	[feedTitles release]; //nil out also? Go over parser logic
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"title"]) {
-		[feedTitles release];
-		feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
-		[currentTitle release];
-		currentTitle = [[NSMutableString alloc] init]; //maybe specify capacity
+		foundTitle = YES;
+		currentTitle = [[[NSMutableString alloc] init] autorelease];
 	}
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	[currentTitle appendString:string];
+	if (foundTitle) {
+		[currentTitle appendString:string];	
+	}
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	[feedTitles addObject:currentTitle];
-	currentTitle = nil;
+	if (foundTitle) {
+		[feedTitles addObject:currentTitle];
+		foundTitle = NO;
+	}
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	[currentTitle release];
+	NSLog(@"%@", feedTitles);
+}
+
+#pragma mark AuthenticationViewController delegate
+- (void) authenticationComplete:(AuthenticationViewController*) avc SIDCookie:(NSHTTPCookie*) cookie {
+	[avc dismissModalViewControllerAnimated:YES];
+	self.sidCookie = cookie;
+	NSLog(@"SID = '%@'", avc.sid);
+	[self getXML];
 }
 
 #pragma mark ViewController methods
@@ -103,18 +112,19 @@
 	[super viewDidLoad];
 	
 	//check for username and password "on disk"
-	//TODO	
+	//TODO
+	
+	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	NSLog(@"viewWillAppear");
 
     if (!authController.authenticated) {
-		//		[self.navigationController pushViewController:self.authController animated:YES];
-		[self.navigationController presentModalViewController:
-			[[AuthenticationViewController alloc] initWithNibName:@"AuthenticationView" bundle:nil] animated:YES];
+		AuthenticationViewController *avc = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationView" bundle:nil];
+		avc.delegate = self;
+		[self.navigationController presentModalViewController:avc animated:YES];
 	}
-	[self getXML];
 	[super viewWillAppear:animated];
 }
 
@@ -209,6 +219,8 @@
 
 
 - (void)dealloc {
+	[currentTitle dealloc];
+	[feedTitles dealloc];
     [super dealloc];
 }
 
