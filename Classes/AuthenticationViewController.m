@@ -12,7 +12,7 @@
 
 @implementation AuthenticationViewController
 
-@synthesize msg, usernameField, passwordField, sid, authenticated, sidCookie, delegate, ga;
+@synthesize msg, usernameField, passwordField, sid, authenticated, delegate, ga;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -21,8 +21,7 @@
 }
 
 - (IBAction) login:(id)sender {
-	self.ga = [[GoogleAuthenticate alloc] initWithUserName:usernameField.text password:passwordField.text];
-	self.ga.delegate = self;
+	self.ga = [[GoogleAuthenticate alloc] initWithUserName:usernameField.text password:passwordField.text delegate:self];
 	
 	[self.msg setText:@"Authenticating..."];
 	
@@ -46,25 +45,9 @@
 	NSLog(@"authenticationComplete");
 
 	self.sid = self.ga.SID;
-	
-	NSDictionary* cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-									  @"SID", NSHTTPCookieName,
-									  @".google.com", NSHTTPCookieDomain, 
-									  @"/", NSHTTPCookiePath, 
-									  @"1600000000", NSHTTPCookieExpires, 
-									  self.ga.SID, NSHTTPCookieValue,
-									  nil];
-	
-	sidCookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
-	if (!sidCookie) {
-		NSLog(@"Failed to create cookie.");
-	}
-	
-	[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:sidCookie];
-	
 	self.authenticated = YES;
 	[activityIndicator stopAnimating];
-	[delegate authenticationComplete:self SIDCookie:sidCookie];
+	[delegate authenticationComplete:self];
 }
 
 - (void) authenticationFailed:(GoogleAuthenticate*) ga {

@@ -11,7 +11,7 @@
 
 @implementation RootViewController
 
-@synthesize feedTitles, currentTitle, sidCookie, authController, mainXMLData, foundTitle;
+@synthesize feedTitles, currentTitle, mainXMLData, foundTitle;
 
 -(void)getXML {
 	NSURL *getXMLURL = [NSURL URLWithString:@"http://www.google.com/reader/atom/"];
@@ -21,44 +21,6 @@
 	[conn release]; //nil out also?
 }
 
-#pragma mark -
-#pragma mark Connection methods
-
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[mainXMLData appendData:data];
-}
-
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[errorAlert show];
-	[errorAlert release];
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-		[self startParsingXML];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	
-	if ([response respondsToSelector:@selector(statusCode)])
-	{
-		int statusCode = [((NSHTTPURLResponse *)response) statusCode];
-		if (statusCode >= 400)
-		{
-			NSLog(@"Received HTTP status code %i", statusCode);
-			
-			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];		
-			[connection cancel];
-
-		    //TODO: handle errors more appropriately
-		} else {
-			self.mainXMLData = [[NSMutableData alloc] init];
-		}
-		
-	}
-}
-
-
 -(void)startParsingXML {
 	NSXMLParser *mainXMLDataParser = [[NSXMLParser alloc] initWithData:mainXMLData];
 	mainXMLDataParser.delegate = self;
@@ -66,10 +28,16 @@
 	[mainXMLDataParser release];
 }
 
+-(void)settingsClick:(id) sender {
+	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"The Future is (Almost) Now" 
+														message:@"This feature will be coming soon!" 
+													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[errorAlert show];
+	[errorAlert release];
+}
+
 #pragma mark -
 #pragma mark Parser methods
-
-
 -(void)parserDidStartDocument:(NSXMLParser *)parser {
 }
 
@@ -95,37 +63,102 @@
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
 	NSLog(@"%@", feedTitles);
-}
-
-#pragma mark AuthenticationViewController delegate
-- (void) authenticationComplete:(AuthenticationViewController*) avc SIDCookie:(NSHTTPCookie*) cookie {
-	[avc dismissModalViewControllerAnimated:YES];
-	self.sidCookie = cookie;
-	NSLog(@"SID = '%@'", avc.sid);
-	[self getXML];
+	// refresh the table
+	[self.tableView reloadData];
 }
 
 #pragma mark ViewController methods
-
 - (void) viewDidLoad {
-	NSLog(@"viewDidLoad");
 	[super viewDidLoad];
-	
-	//check for username and password "on disk"
-	//TODO
 	
 	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	NSLog(@"viewWillAppear");
-
-    if (!authController.authenticated) {
-		AuthenticationViewController *avc = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationView" bundle:nil];
-		avc.delegate = self;
-		[self.navigationController presentModalViewController:avc animated:YES];
-	}
+- (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+
+	toolbar = [[UIToolbar alloc] init];
+	toolbar.barStyle = UIBarStyleDefault;
+	[toolbar sizeToFit];
+	CGFloat toolbarHeight = [toolbar frame].size.height;
+	CGRect rootViewBounds = self.parentViewController.view.bounds;
+	CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
+	CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
+	CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
+	[toolbar setFrame:rectArea];
+	
+	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
+																				target:self 
+																				action:@selector(settingsClick:)];
+	
+	[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
+	
+	//Add the toolbar as a subview to the navigation controller.
+	[self.navigationController.view addSubview:toolbar];
+	
+	[self getXML];
+}
+
+#pragma mark Table view methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [feedTitles count];
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+	// Configure the cell.
+	cell.textLabel.text = [self.feedTitles objectAtIndex:indexPath.row];
+	
+    return cell;
+}
+
+#pragma mark -
+#pragma mark Connection methods
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[mainXMLData appendData:data];
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[errorAlert show];
+	[errorAlert release];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	[self startParsingXML];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	
+	if ([response respondsToSelector:@selector(statusCode)])
+	{
+		int statusCode = [((NSHTTPURLResponse *)response) statusCode];
+		if (statusCode >= 400)
+		{
+			NSLog(@"Received HTTP status code %i", statusCode);
+			
+			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];		
+			[connection cancel];
+			
+		    //TODO: handle errors more appropriately
+		} else {
+			self.mainXMLData = [[NSMutableData alloc] init];
+		}
+		
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,95 +168,9 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark Table view methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-	// Configure the cell.
-	cell.textLabel.text = [[self.feedTitles objectAtIndex:indexPath.row] valueForKey:@"title"];
-	
-    return cell;
-}
-
-
-
-/*
-// Override to support row selection in the table view.
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
-}
-*/
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 - (void)dealloc {
 	[currentTitle dealloc];
 	[feedTitles dealloc];
     [super dealloc];
 }
-
-
 @end
-

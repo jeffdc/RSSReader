@@ -16,21 +16,36 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 
 @implementation GoogleAuthenticate
 
-@synthesize userName, password, SID, authenticated, failureReason, failureDescription, completed, responseData, conn, delegate;
+@synthesize userName, password, SID, authenticated, failureReason, failureDescription, responseData, conn, delegate;
 
-- (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword {
+- (id) initWithDelegate:(id<GoogleAuthenticateDelegate>) theDelegate {
+	self = [super init];
+	if (nil != self) {
+		self.authenticated = NO;
+		self.delegate = theDelegate;
+	}
+	
+	return self;
+}
+
+- (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword delegate:(id<GoogleAuthenticateDelegate>) theDelegate; {
 	self = [super init];
 	if (nil != self) {
 		self.userName = newUserName;
 		self.password = newPassword;
 		self.authenticated = NO;
-		self.completed = NO;
+		self.delegate = theDelegate;
 	}
 	return self;
 }
 
+- (void) authenticateWithUserName:(NSString*)theUserName password:(NSString*) thePassword {
+	self.userName = theUserName;
+	self.password = thePassword;
+	[self authenticate];
+}
+
 - (void) authenticate {
-	NSLog(@"authenticate");
 	if (!authenticated) {
 		// authenticate with google
 		NSURL *url = [NSURL URLWithString:GOOGLE_LOGIN_URL];
@@ -66,8 +81,6 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 
 #pragma mark connection delegate methods
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"GA.didReceiveResponse");
-
 	if ([response respondsToSelector:@selector(statusCode)])
 	{
 		int statusCode = [((NSHTTPURLResponse *)response) statusCode];
@@ -77,7 +90,6 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 			
 			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];		
 			[connection cancel];
-			self.completed = YES;
 
 		    //TODO: handle errors more appropriately
 			failureReason = @"Invalid Login";
@@ -107,15 +119,12 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSLog(@"GA.connDidFinish");
-
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
 	self.SID = [self parseSID:[[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease]];
 	
 	[connection release];
 	[self.responseData release];
-	self.completed = YES;
 	self.authenticated = YES;
 	[self.delegate authenticationComplete: self];
 }

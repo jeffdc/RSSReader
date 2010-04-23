@@ -18,7 +18,6 @@
 	NSString *password;
 	NSString *SID;
 	bool authenticated;
-	bool completed;
 	NSString *failureReason;
 	NSString *failureDescription;
 	
@@ -28,9 +27,11 @@
 	id<GoogleAuthenticateDelegate> delegate;
 }
 
-- (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword;
+- (id) initWithDelegate:(id<GoogleAuthenticateDelegate>) theDelegate;
+- (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword delegate:(id<GoogleAuthenticateDelegate>) theDelegate;
 
 - (void) authenticate;
+- (void) authenticateWithUserName:(NSString*)theUserName password:(NSString*) thePassword;
 
 - (NSString *)parseSID:(NSString *)response;
 
@@ -38,7 +39,6 @@
 @property(nonatomic, retain) NSString *password;
 @property(nonatomic, retain) NSString *SID;
 @property bool authenticated;
-@property bool completed;
 @property(nonatomic, retain) NSString *failureReason;
 @property(nonatomic, retain) NSString *failureDescription;
 @property(nonatomic, retain) NSMutableData *responseData;
