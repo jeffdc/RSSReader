@@ -14,12 +14,6 @@
 
 @synthesize msg, usernameField, passwordField, sid, authenticated, delegate, ga;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	self.authenticated = NO;
-	return self;
-}
-
 - (IBAction) login:(id)sender {
 	self.ga = [[GoogleAuthenticate alloc] initWithUserName:usernameField.text password:passwordField.text delegate:self];
 	
@@ -30,6 +24,10 @@
 }
 
 #pragma mark delegate methods
+- (void) viewDidLoad {
+	self.authenticated = NO;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField	{
 	[textField resignFirstResponder];
 	if (textField == passwordField) {

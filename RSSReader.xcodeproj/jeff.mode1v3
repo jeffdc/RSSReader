@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
+									<integer>3</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RootViewController.m</string>
+								<string>BaseGoogleViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,24 +326,24 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RootViewController.m</string>
+										<string>BaseGoogleViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1F41D64511822D0F00756AB5</string>
+										<string>1F41D7041182963300756AB5</string>
 										<key>history</key>
 										<array>
 											<string>1F7316BB11754D800061DB37</string>
 											<string>1F73173E117557D50061DB37</string>
 											<string>1F73174A1175588D0061DB37</string>
-											<string>1F41D5BE11814EF400756AB5</string>
-											<string>1F41D5BF11814EF400756AB5</string>
-											<string>1F41D5C011814EF400756AB5</string>
 											<string>1F41D5C111814EF400756AB5</string>
-											<string>1F41D5C211814EF400756AB5</string>
-											<string>1F41D5C311814EF400756AB5</string>
-											<string>1F41D63311822BBA00756AB5</string>
-											<string>1F41D63411822BBA00756AB5</string>
+											<string>1F41D6B311828F0D00756AB5</string>
+											<string>1F41D6C8118292D700756AB5</string>
+											<string>1F41D6D0118292FD00756AB5</string>
+											<string>1F41D6EB1182959C00756AB5</string>
+											<string>1F41D7011182963300756AB5</string>
+											<string>1F41D7021182963300756AB5</string>
+											<string>1F41D7031182963300756AB5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -541,7 +541,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1F41D64611822D0F00756AB5</string>
+		<string>1F41D7051182963300756AB5</string>
 		<string>1F41D5D211814F0800756AB5</string>
 		<string>1F41D5D611814F0A00756AB5</string>
 		<string>1F41D5CF11814EF400756AB5</string>

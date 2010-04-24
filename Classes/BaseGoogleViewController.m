@@ -15,20 +15,13 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 
 @synthesize sid, sidCookie, authenticated, ga;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super init];
-	if (self != nil) {
-		[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-		self.authenticated = NO;
-
-		self.ga = [[GoogleAuthenticate alloc] initWithDelegate:self];
-	}
-	
-	return self;
+- (void) viewDidLoad {
+	self.authenticated = NO;
+	self.ga = [[GoogleAuthenticate alloc] initWithDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (!self.authenticated) {
+   if (!self.authenticated) {
 		// try to get user name and password from "disk"
 		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 		NSArray *vals = [ud stringArrayForKey:USER_DEFAULTS_KEY];
@@ -43,13 +36,14 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	[super viewWillAppear:animated];
 }
 
-- (NSHTTPCookie*) createSidCookie:(NSString*) sid {
+- (NSHTTPCookie*) createSidCookie {
+	NSLog(@"SID = '%@'", self.sid);
 	NSDictionary* cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
 									  @"SID", NSHTTPCookieName,
 									  @".google.com", NSHTTPCookieDomain, 
 									  @"/", NSHTTPCookiePath, 
 									  @"1600000000", NSHTTPCookieExpires, 
-									  self.ga.SID, NSHTTPCookieValue,
+									  self.sid, NSHTTPCookieValue,
 									  nil];
 	
 	sidCookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
@@ -64,7 +58,7 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 
 - (void) completeAuthentication:(NSString*)theSid {
 	self.sid = theSid;
-	self.sidCookie = [self createSidCookie:sid];
+	self.sidCookie = [self createSidCookie];
 	self.authenticated = YES;
 }
 
@@ -81,7 +75,8 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	[self completeAuthentication:theGa.SID];
 }
 
-- (void) authenticationFailed:(GoogleAuthenticate*) ga {
+- (void) authenticationFailed:(GoogleAuthenticate*) theGa {
+	NSLog(@"Authentication failed. %@", theGa.failureReason);
 	self.authenticated = NO;
 }
 

@@ -36,12 +36,48 @@
 	[errorAlert release];
 }
 
+#pragma mark ViewController methods
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	
+	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	toolbar = [[UIToolbar alloc] init];
+	toolbar.barStyle = UIBarStyleDefault;
+	[toolbar sizeToFit];
+	CGFloat toolbarHeight = [toolbar frame].size.height;
+	CGRect rootViewBounds = self.parentViewController.view.bounds;
+	CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
+	CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
+	CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
+	[toolbar setFrame:rectArea];
+	
+	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
+																				target:self 
+																				action:@selector(settingsClick:)];
+	
+	[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
+	
+	//Add the toolbar as a subview to the navigation controller.
+	[self.navigationController.view addSubview:toolbar];
+	
+	[self getXML];
+}
+
 #pragma mark -
 #pragma mark Parser methods
 -(void)parserDidStartDocument:(NSXMLParser *)parser {
+	
 }
 
--(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
+			qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+	
+	NSLog(@"Element Name = '%@'", elementName);
 	if ([elementName isEqualToString:@"title"]) {
 		foundTitle = YES;
 		currentTitle = [[[NSMutableString alloc] init] autorelease];
@@ -65,38 +101,6 @@
 	NSLog(@"%@", feedTitles);
 	// refresh the table
 	[self.tableView reloadData];
-}
-
-#pragma mark ViewController methods
-- (void) viewDidLoad {
-	[super viewDidLoad];
-	
-	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-
-	toolbar = [[UIToolbar alloc] init];
-	toolbar.barStyle = UIBarStyleDefault;
-	[toolbar sizeToFit];
-	CGFloat toolbarHeight = [toolbar frame].size.height;
-	CGRect rootViewBounds = self.parentViewController.view.bounds;
-	CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
-	CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
-	CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
-	[toolbar setFrame:rectArea];
-	
-	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
-																				target:self 
-																				action:@selector(settingsClick:)];
-	
-	[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
-	
-	//Add the toolbar as a subview to the navigation controller.
-	[self.navigationController.view addSubview:toolbar];
-	
-	[self getXML];
 }
 
 #pragma mark Table view methods
