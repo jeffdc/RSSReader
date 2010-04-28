@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>2</integer>
+									<integer>9</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BaseGoogleViewController.m</string>
+								<string>RootViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,24 +326,24 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>BaseGoogleViewController.m</string>
+										<string>RootViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1FAB9CB71187C46E0052E7A2</string>
+										<string>1FAB9D361187D4680052E7A2</string>
 										<key>history</key>
 										<array>
 											<string>1F7316BB11754D800061DB37</string>
 											<string>1F73173E117557D50061DB37</string>
 											<string>1F73174A1175588D0061DB37</string>
-											<string>1FAB9C961187C1040052E7A2</string>
 											<string>1FAB9C971187C1040052E7A2</string>
 											<string>1FAB9C9B1187C1040052E7A2</string>
 											<string>1FAB9C9C1187C1040052E7A2</string>
 											<string>1FAB9CAA1187C3F30052E7A2</string>
-											<string>1FAB9CAB1187C3F30052E7A2</string>
-											<string>1FAB9CB51187C46E0052E7A2</string>
-											<string>1FAB9CB61187C46E0052E7A2</string>
+											<string>1FAB9CBA1187CB280052E7A2</string>
+											<string>1FAB9D0C1187D32E0052E7A2</string>
+											<string>1FAB9D161187D3760052E7A2</string>
+											<string>1FAB9D2E1187D4430052E7A2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -541,7 +541,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1FAB9CB81187C46E0052E7A2</string>
+		<string>1FAB9D371187D4680052E7A2</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1FAB9CA01187C1040052E7A2</string>
 		<string>1FAB9C801187BA000052E7A2</string>
@@ -572,7 +572,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BaseGoogleViewController.m</string>
+								<string>RootViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

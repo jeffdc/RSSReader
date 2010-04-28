@@ -11,13 +11,19 @@
 
 @interface RootViewController : BaseGoogleViewController {
 	NSMutableData *mainXMLData;
-	NSMutableArray *feedTitles;
+	NSMutableDictionary *feedTitles;
 	NSMutableString *currentTitle;
 	bool foundTitle;
+	
+	@private 
+	bool isEntry;
+	bool isLabel;
 }
 
-@property (nonatomic, retain) NSMutableArray *feedTitles;
+@property (nonatomic, retain) NSMutableDictionary *feedTitles;
 @property (nonatomic, retain) NSMutableString *currentTitle;
 @property (nonatomic, retain) NSMutableData *mainXMLData;
 @property bool foundTitle;
+@property bool isEntry;
+@property bool isLabel;
 @end

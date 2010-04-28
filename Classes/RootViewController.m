@@ -16,7 +16,7 @@
 
 @implementation RootViewController
 
-@synthesize feedTitles, currentTitle, mainXMLData, foundTitle;
+@synthesize feedTitles, currentTitle, mainXMLData, foundTitle, isEntry, isLabel;
 
 - (void)dealloc {
 	[currentTitle dealloc];
@@ -49,7 +49,7 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
+	feedTitles = [[NSMutableDictionary alloc] init];
 }
 
 -(void)postViewAppeared {
@@ -59,19 +59,40 @@
 #pragma mark -
 #pragma mark Parser methods
 -(void)parserDidStartDocument:(NSXMLParser *)parser {
-	
+	isEntry = NO;
+	isLabel = NO;
+	foundTitle = NO;
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
 			qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
-	NSLog(@"Element Name = '%@'", elementName);
 	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
 	if ([elementName isEqualToString:@"html"]) {
 		[parser abortParsing];
 		self.authenticated = NO;
 		[self authenticate];
-	} else if ([elementName isEqualToString:@"title"]) {
+		return;
+	}
+
+	if ([elementName isEqualToString:@"entry"]) {
+		isEntry = YES;
+	}
+	
+	if ([elementName isEqualToString:@"category"] && isEntry) {
+		// todo parse out labels
+		NSString* term = [attributeDict objectForKey:@"term"];
+		NSArray* things = [term componentsSeparatedByString:@"/"];
+		if ([things count] == 4 && [[things objectAtIndex:[things count] - 2] isEqualToString:@"label"]) {
+			// found a label
+			NSString* label = [things objectAtIndex:[things count] - 1];
+			NSLog(@"@@@@@@@@@@@@ '%@' @@@@@@@@@@@@", label);
+			[feedTitles setValue:label forKey:label];
+			isLabel = YES;
+		}
+	}
+
+	if ([elementName isEqualToString:@"title"] && isEntry && !isLabel) {
 		foundTitle = YES;
 		currentTitle = [[[NSMutableString alloc] init] autorelease];
 	}
@@ -85,13 +106,17 @@
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	if (foundTitle) {
-		[feedTitles addObject:currentTitle];
+		[feedTitles setValue:nil forKey:currentTitle];
 		foundTitle = NO;
+	}
+	
+	if ([elementName isEqualToString:@"entry"]) {
+		isEntry = NO;
+		isLabel = NO;
 	}
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	NSLog(@"%@", feedTitles);
 	// refresh the table
 	[self.tableView reloadData];
 }
@@ -104,6 +129,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	NSLog(@"count = '%d'", [feedTitles count]);
     return [feedTitles count];
 }
 
@@ -117,7 +143,8 @@
     }
     
 	// Configure the cell.
-	cell.textLabel.text = [self.feedTitles objectAtIndex:indexPath.row];
+	NSLog(@"Keys = '%@'", [self.feedTitles allKeys]);
+	cell.textLabel.text = [[self.feedTitles allKeys] objectAtIndex:indexPath.row];
 	
     return cell;
 }
@@ -135,9 +162,9 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
-	NSLog(@"%@", s);
-	[s release];
+//	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
+//	NSLog(@"%@", s);
+//	[s release];
 	[self startParsingXML];
 }
 
