@@ -14,6 +14,12 @@
 
 @synthesize msg, usernameField, passwordField, sid, authenticated, delegate, ga;
 
+- (void)dealloc {
+	[ga dealloc];
+	
+    [super dealloc];
+}
+
 - (IBAction) login:(id)sender {
 	self.ga = [[GoogleAuthenticate alloc] initWithUserName:usernameField.text password:passwordField.text delegate:self];
 	
@@ -61,15 +67,4 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 @end

@@ -28,12 +28,10 @@
 }
 
 - (id) initWithDelegate:(id<GoogleAuthenticateDelegate>) theDelegate;
-- (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword delegate:(id<GoogleAuthenticateDelegate>) theDelegate;
+- (id) initWithUserName:(NSString *)newUserName password:(NSString *)newPassword delegate:(id<GoogleAuthenticateDelegate>) theDelegate;
 
 - (void) authenticate;
 - (void) authenticateWithUserName:(NSString*)theUserName password:(NSString*) thePassword;
-
-- (NSString *)parseSID:(NSString *)response;
 
 @property(nonatomic, retain) NSString *userName;
 @property(nonatomic, retain) NSString *password;

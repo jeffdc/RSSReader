@@ -10,7 +10,7 @@
 #import "AuthenticationViewController.h"
 
 @interface BaseGoogleViewController : UITableViewController<GoogleAuthenticateDelegate, AuthenticationViewControllerDelegate> {
-
+	UIToolbar* toolbar;
 	NSString *sid;
 	NSHTTPCookie *sidCookie;
 	bool authenticated;
@@ -18,6 +18,9 @@
 @private
 	GoogleAuthenticate* ga;	
 }
+
+-(void)authenticate;
+-(void)settingsClick:(id) sender;
 
 @property (nonatomic, retain) NSString *sid;
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;

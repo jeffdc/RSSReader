@@ -9,15 +9,32 @@
 #import "RootViewController.h"
 #import "AuthenticationViewController.h"
 
+@interface RootViewController ()
+-(void)getXML;
+-(void)startParsingXML;
+@end
+
 @implementation RootViewController
 
 @synthesize feedTitles, currentTitle, mainXMLData, foundTitle;
 
--(void)getXML {
-	NSURL *getXMLURL = [NSURL URLWithString:@"http://www.google.com/reader/atom/"];
-	NSURLRequest *getXMLRequest = [[NSURLRequest alloc]initWithURL:getXMLURL]; //use an NSMutableRequest so it can be reused?
-	NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:getXMLRequest delegate:self];
-	[getXMLRequest release];
+- (void)dealloc {
+	[currentTitle dealloc];
+	[feedTitles dealloc];
+    [super dealloc];
+}
+
+-(void)getXML {	
+	NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/reading-list"];
+	// make sure the proper cookie is set
+	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
+		NSLog(@"No google cookie set!");
+	}
+
+	NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url]; //use an NSMutableRequest so it can be reused?
+	
+	NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+	[request release];
 	[conn release]; //nil out also?
 }
 
@@ -26,14 +43,6 @@
 	mainXMLDataParser.delegate = self;
 	[mainXMLDataParser parse];
 	[mainXMLDataParser release];
-}
-
--(void)settingsClick:(id) sender {
-	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"The Future is (Almost) Now" 
-														message:@"This feature will be coming soon!" 
-													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[errorAlert show];
-	[errorAlert release];
 }
 
 #pragma mark ViewController methods
@@ -45,25 +54,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
-	toolbar = [[UIToolbar alloc] init];
-	toolbar.barStyle = UIBarStyleDefault;
-	[toolbar sizeToFit];
-	CGFloat toolbarHeight = [toolbar frame].size.height;
-	CGRect rootViewBounds = self.parentViewController.view.bounds;
-	CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
-	CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
-	CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
-	[toolbar setFrame:rectArea];
-	
-	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
-																				target:self 
-																				action:@selector(settingsClick:)];
-	
-	[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
-	
-	//Add the toolbar as a subview to the navigation controller.
-	[self.navigationController.view addSubview:toolbar];
 	
 	[self getXML];
 }
@@ -78,7 +68,12 @@
 			qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
 	NSLog(@"Element Name = '%@'", elementName);
-	if ([elementName isEqualToString:@"title"]) {
+	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
+	if ([elementName isEqualToString:@"html"]) {
+		[parser abortParsing];
+		self.authenticated = NO;
+		[self authenticate];
+	} else if ([elementName isEqualToString:@"title"]) {
 		foundTitle = YES;
 		currentTitle = [[[NSMutableString alloc] init] autorelease];
 	}
@@ -142,6 +137,9 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
+	NSLog(@"%@", s);
+	[s release];
 	[self startParsingXML];
 }
 
@@ -170,11 +168,5 @@
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)dealloc {
-	[currentTitle dealloc];
-	[feedTitles dealloc];
-    [super dealloc];
 }
 @end

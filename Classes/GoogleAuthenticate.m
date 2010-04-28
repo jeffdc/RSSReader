@@ -14,9 +14,22 @@ static NSString *const USER_AGENT = @"nothoo-test";
 static NSString *const FORM_TEMPLATE = @"Email=%@&Passwd=%@&service=reader&accountType=HOSTED_OR_GOOGLE&source=%@";
 static NSString *const APP_ID = @"nothoo-tester-1.0";
 
+@interface GoogleAuthenticate ()
+- (NSString *)parseSID:(NSString *)response;
+@end
+
 @implementation GoogleAuthenticate
 
 @synthesize userName, password, SID, authenticated, failureReason, failureDescription, responseData, conn, delegate;
+
+- (void) dealloc {
+	userName = nil;
+	password = nil;
+	failureReason = nil;
+	failureDescription = nil;
+	SID = nil;
+	[super dealloc];
+}
 
 - (id) initWithDelegate:(id<GoogleAuthenticateDelegate>) theDelegate {
 	self = [super init];
@@ -129,13 +142,7 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 	[self.delegate authenticationComplete: self];
 }
 
-- (void) dealloc {
-	userName = nil;
-	password = nil;
-	failureReason = nil;
-	failureDescription = nil;
-	SID = nil;
-	[super dealloc];
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+	return nil;
 }
-
 @end
