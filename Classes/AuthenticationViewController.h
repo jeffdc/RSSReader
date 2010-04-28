@@ -12,7 +12,7 @@
 @class AuthenticationViewController;
 
 @protocol AuthenticationViewControllerDelegate<NSObject>
-- (void) authenticationComplete:(AuthenticationViewController*) avc;
+- (void) authenticationVCComplete:(AuthenticationViewController*) avc;
 @end
 
 @interface AuthenticationViewController : UIViewController<UITextFieldDelegate, GoogleAuthenticateDelegate> {

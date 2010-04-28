@@ -51,7 +51,7 @@
 	self.sid = self.ga.SID;
 	self.authenticated = YES;
 	[activityIndicator stopAnimating];
-	[delegate authenticationComplete:self];
+	[delegate authenticationVCComplete:self];
 }
 
 - (void) authenticationFailed:(GoogleAuthenticate*) ga {

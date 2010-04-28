@@ -22,6 +22,8 @@
 -(void)authenticate;
 -(void)settingsClick:(id) sender;
 
+-(void)postViewAppeared;
+
 @property (nonatomic, retain) NSString *sid;
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;
 @property bool authenticated;

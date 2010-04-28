@@ -80,6 +80,10 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	self.authenticated = YES;
 }
 
+-(void)postViewAppeared {
+	[NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
 # pragma mark ViewController delegates
 - (void) viewDidLoad {
 	self.authenticated = NO;
@@ -123,6 +127,7 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 #pragma mark GoogleAuthenticate delegate
 - (void) authenticationComplete:(GoogleAuthenticate*) theGa {
 	[self completeAuthentication:theGa.SID];
+	[self postViewAppeared];
 }
 
 - (void) authenticationFailed:(GoogleAuthenticate*) theGa {

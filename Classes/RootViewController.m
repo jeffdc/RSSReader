@@ -52,9 +52,7 @@
 	feedTitles = [[NSMutableArray alloc] init]; //maybe specify capacity
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
+-(void)postViewAppeared {
 	[self getXML];
 }
 
