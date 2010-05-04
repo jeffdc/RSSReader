@@ -16,7 +16,6 @@
 		1F41D53111813DE700756AB5 /* BaseGoogleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */; };
 		1F57E06D118F602400947E6D /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E06C118F602400947E6D /* FeedItem.m */; };
 		1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E09D118F788800947E6D /* PreferencesViewController.m */; };
-		1F57E0A0118F788800947E6D /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F57E09E118F788800947E6D /* PreferencesViewController.xib */; };
 		1F57E0A3118F7A2400947E6D /* PreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F57E0A2118F7A2400947E6D /* PreferencesView.xib */; };
 		1FA8019C116ECBB40050E62B /* GoogleAuthenticate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
@@ -40,7 +39,6 @@
 		1F57E06C118F602400947E6D /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
 		1F57E09C118F788800947E6D /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		1F57E09D118F788800947E6D /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
-		1F57E09E118F788800947E6D /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
 		1F57E0A2118F7A2400947E6D /* PreferencesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesView.xib; sourceTree = "<group>"; };
 		1F57E1231190AC6A00947E6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAuthenticate.h; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 				1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */,
 				1F57E09C118F788800947E6D /* PreferencesViewController.h */,
 				1F57E09D118F788800947E6D /* PreferencesViewController.m */,
-				1F57E09E118F788800947E6D /* PreferencesViewController.xib */,
 				1F57E1231190AC6A00947E6D /* Constants.h */,
 			);
 			path = Classes;
@@ -195,7 +192,6 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				086F08681153F88200D12F62 /* AuthenticationView.xib in Resources */,
-				1F57E0A0118F788800947E6D /* PreferencesViewController.xib in Resources */,
 				1F57E0A3118F7A2400947E6D /* PreferencesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

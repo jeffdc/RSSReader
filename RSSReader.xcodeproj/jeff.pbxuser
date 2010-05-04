@@ -12,7 +12,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1113, 1136}}";
 			sepNavSelRange = "{1215, 0}";
-			sepNavVisRange = "{0, 758}";
+			sepNavVisRange = "{3, 755}";
 			sepNavWindowFrame = "{{15, 4}, {1060, 874}}";
 		};
 	};
@@ -132,14 +132,14 @@
 	};
 	1F57E06B118F602400947E6D /* FeedItem.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 320}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 501}}";
 			sepNavSelRange = "{135, 0}";
 			sepNavVisRange = "{0, 348}";
 		};
 	};
 	1F57E06C118F602400947E6D /* FeedItem.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 526}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 512}}";
 			sepNavSelRange = "{156, 0}";
 			sepNavVisRange = "{0, 475}";
 		};
@@ -269,9 +269,9 @@
 	};
 	1F57E09D118F788800947E6D /* PreferencesViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 1200}}";
-			sepNavSelRange = "{455, 0}";
-			sepNavVisRange = "{190, 1075}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 1248}}";
+			sepNavSelRange = "{518, 0}";
+			sepNavVisRange = "{0, 886}";
 		};
 	};
 	1F57E0A1118F78C000947E6D /* PBXTextBookmark */ = {
@@ -876,9 +876,9 @@
 	};
 	1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 2512}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 2544}}";
 			sepNavSelRange = "{795, 327}";
-			sepNavVisRange = "{502, 862}";
+			sepNavVisRange = "{0, 929}";
 		};
 	};
 	1FAB9C971187C1040052E7A2 /* PBXTextBookmark */ = {
