@@ -8,15 +8,17 @@
 
 #import "GoogleAuthenticate.h"
 #import "AuthenticationViewController.h"
+#import "PreferencesViewController.h"
 
-@interface BaseGoogleViewController : UITableViewController<GoogleAuthenticateDelegate, AuthenticationViewControllerDelegate> {
+@interface BaseGoogleViewController : UITableViewController<
+				GoogleAuthenticateDelegate, AuthenticationViewControllerDelegate, PreferencesViewControllerDelegate> {
 	UIToolbar* toolbar;
 	NSString *sid;
 	NSHTTPCookie *sidCookie;
 	bool authenticated;
 	
 @private
-	GoogleAuthenticate* ga;	
+	GoogleAuthenticate* ga;
 }
 
 -(void)authenticate;

@@ -11,9 +11,7 @@
 //
 
 #import "BaseGoogleViewController.h"
-#import "AuthenticationViewController.h"
-
-static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
+#import "Constants.h"
 
 @interface BaseGoogleViewController ()
 - (NSHTTPCookie*) createSidCookie;
@@ -28,6 +26,7 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	[ga dealloc];
 	[sid dealloc];
 	[sidCookie dealloc];
+	[toolbar dealloc];
 	[super dealloc];
 }
 
@@ -47,11 +46,11 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 }
 
 -(void)settingsClick:(id) sender {
-	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"The Future is (Almost) Now" 
-														message:@"This feature will be coming soon!" 
-													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[errorAlert show];
-	[errorAlert release];
+	PreferencesViewController* controller = [[PreferencesViewController alloc] initWithNibName:@"PreferencesView" bundle:nil];
+	controller.delegate = self;
+	
+	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentModalViewController:controller animated:YES];
 }
 
 - (NSHTTPCookie*) createSidCookie {
@@ -121,7 +120,9 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	[avc dismissModalViewControllerAnimated:YES];
 	[self completeAuthentication:avc.sid];
 	// save to "disk"
-	[[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:avc.usernameField.text, avc.passwordField.text, nil] forKey:USER_DEFAULTS_KEY];
+	[[NSUserDefaults standardUserDefaults] 
+	 setObject:[NSArray arrayWithObjects:avc.usernameField.text, avc.passwordField.text, nil] 
+	 forKey:USER_DEFAULTS_KEY];
 }
 
 #pragma mark GoogleAuthenticate delegate
@@ -134,4 +135,13 @@ static NSString *const USER_DEFAULTS_KEY = @"rssreader.nothoo.com";
 	NSLog(@"Authentication failed. %@", theGa.failureReason);
 	self.authenticated = NO;
 }
+
+#pragma mark PreferencesViewController delegate
+- (void)preferencesViewControllerDidFinish:(PreferencesViewController *)controller {
+	[self dismissModalViewControllerAnimated:YES];
+	
+	//TODO: why does this cause a crash later? where is controller being reused???
+	//	[controller release];
+}
+
 @end

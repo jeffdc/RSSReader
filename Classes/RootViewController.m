@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "AuthenticationViewController.h"
+#import "FeedItem.h"
 
 @interface RootViewController ()
 -(void)getXML;
@@ -80,14 +81,13 @@
 	}
 	
 	if ([elementName isEqualToString:@"category"] && isEntry) {
-		// todo parse out labels
 		NSString* term = [attributeDict objectForKey:@"term"];
 		NSArray* things = [term componentsSeparatedByString:@"/"];
 		if ([things count] == 4 && [[things objectAtIndex:[things count] - 2] isEqualToString:@"label"]) {
 			// found a label
 			NSString* label = [things objectAtIndex:[things count] - 1];
-			NSLog(@"@@@@@@@@@@@@ '%@' @@@@@@@@@@@@", label);
-			[feedTitles setValue:label forKey:label];
+			FeedItem* item = [[FeedItem alloc] initWithTitle:label isLabel:YES];
+			[feedTitles setValue:item forKey:label];
 			isLabel = YES;
 		}
 	}
@@ -106,7 +106,8 @@
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	if (foundTitle) {
-		[feedTitles setValue:nil forKey:currentTitle];
+		FeedItem* item = [[FeedItem alloc] initWithTitle:currentTitle isLabel:NO];
+		[feedTitles setValue:item forKey:currentTitle];
 		foundTitle = NO;
 	}
 	
@@ -143,10 +144,16 @@
     }
     
 	// Configure the cell.
-	NSLog(@"Keys = '%@'", [self.feedTitles allKeys]);
+	//	NSLog(@"Keys = '%@'", [self.feedTitles allKeys]);
 	cell.textLabel.text = [[self.feedTitles allKeys] objectAtIndex:indexPath.row];
 	
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	
+	//	[self navigationController pushViewController:childController animates:YES];
 }
 
 #pragma mark -
