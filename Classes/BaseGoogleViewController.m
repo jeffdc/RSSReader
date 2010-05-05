@@ -79,38 +79,45 @@
 	self.authenticated = YES;
 }
 
--(void)postViewAppeared {
+-(void)authencationComplete {
 	[NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 # pragma mark ViewController delegates
 - (void) viewDidLoad {
+	NSLog(@"called viewDidLoad");
 	self.authenticated = NO;
 	self.ga = [[GoogleAuthenticate alloc] initWithDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self authenticate];
+	NSLog(@"called viewWIllAppear");
 	
- 	// setup the toolbar
-	toolbar = [[UIToolbar alloc] init];
-	toolbar.barStyle = UIBarStyleDefault;
-	[toolbar sizeToFit];
-	CGFloat toolbarHeight = [toolbar frame].size.height;
-	CGRect rootViewBounds = self.parentViewController.view.bounds;
-	CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
-	CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
-	CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
-	[toolbar setFrame:rectArea];
-	
-	UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
-																				target:self 
-																				action:@selector(settingsClick:)];
-	
-	[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
-	
-	//Add the toolbar as a subview to the navigation controller.
-	[self.navigationController.view addSubview:toolbar];
+	if (!initalized) {
+		[self authenticate];
+		
+		// setup the toolbar
+		toolbar = [[UIToolbar alloc] init];
+		toolbar.barStyle = UIBarStyleDefault;
+		[toolbar sizeToFit];
+		CGFloat toolbarHeight = [toolbar frame].size.height;
+		CGRect rootViewBounds = self.parentViewController.view.bounds;
+		CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
+		CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
+		CGRect rectArea = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
+		[toolbar setFrame:rectArea];
+		
+		UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
+																					target:self 
+																					action:@selector(settingsClick:)];
+		
+		[toolbar setItems:[NSArray arrayWithObjects:infoButton,nil]];
+		
+		//Add the toolbar as a subview to the navigation controller.
+		[self.navigationController.view addSubview:toolbar];
+		
+		initalized = YES;
+	}
 	
 	[super viewWillAppear:animated];
 }
@@ -128,7 +135,7 @@
 #pragma mark GoogleAuthenticate delegate
 - (void) authenticationComplete:(GoogleAuthenticate*) theGa {
 	[self completeAuthentication:theGa.SID];
-	[self postViewAppeared];
+	[self authencationComplete];
 }
 
 - (void) authenticationFailed:(GoogleAuthenticate*) theGa {

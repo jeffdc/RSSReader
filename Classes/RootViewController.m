@@ -25,12 +25,23 @@
     [super dealloc];
 }
 
--(void)getXML {	
-	NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/reading-list"];
+-(void)getXML {
 	// make sure the proper cookie is set
 	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
 		NSLog(@"No google cookie set!");
 	}
+
+	NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:
+						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
+						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
+						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
+						  nil];
+						  
+	// loop through static Dictionary of URL->Parser
+	
+		NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/reading-list"];
+	//	NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"];
+
 
 	NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url]; //use an NSMutableRequest so it can be reused?
 	
@@ -50,10 +61,13 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
+	if (self.authenticated) {
+		[self getXML];
+	}
 	feedTitles = [[NSMutableDictionary alloc] init];
 }
 
--(void)postViewAppeared {
+-(void)authencationComplete {
 	[self getXML];
 }
 
@@ -169,9 +183,9 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-//	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
-//	NSLog(@"%@", s);
-//	[s release];
+	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
+	NSLog(@"%@", s);
+	[s release];
 	[self startParsingXML];
 }
 

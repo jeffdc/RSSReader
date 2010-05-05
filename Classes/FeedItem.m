@@ -9,11 +9,12 @@
 #import "FeedItem.h"
 
 @implementation FeedItem
-@synthesize isLabel, title;
+@synthesize isLabel, title, sites;
 
 - (void) dealloc {
 	[title release];
-	title = nil;
+	[sites release];
+	
 	[super dealloc];
 }
 
@@ -24,6 +25,8 @@
 		self.isLabel = theIslabel;
 		self.title = theTitle;
 	}
+	
+	sites = [[NSMutableArray alloc] init];
 	
 	return self;
 }

@@ -17,6 +17,10 @@
 		1F57E06D118F602400947E6D /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E06C118F602400947E6D /* FeedItem.m */; };
 		1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E09D118F788800947E6D /* PreferencesViewController.m */; };
 		1F57E0A3118F7A2400947E6D /* PreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F57E0A2118F7A2400947E6D /* PreferencesView.xib */; };
+		1F57E1691191010300947E6D /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E1681191010300947E6D /* Site.m */; };
+		1F57E16C1191015C00947E6D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E16B1191015C00947E6D /* Entry.m */; };
+		1F57E16F1191020100947E6D /* LabelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E16E1191020100947E6D /* LabelParser.m */; };
+		1F57E1A911910AC700947E6D /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E1A811910AC700947E6D /* BaseParser.m */; };
 		1FA8019C116ECBB40050E62B /* GoogleAuthenticate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -41,6 +45,14 @@
 		1F57E09D118F788800947E6D /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		1F57E0A2118F7A2400947E6D /* PreferencesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesView.xib; sourceTree = "<group>"; };
 		1F57E1231190AC6A00947E6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		1F57E1671191010300947E6D /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		1F57E1681191010300947E6D /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
+		1F57E16A1191015C00947E6D /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		1F57E16B1191015C00947E6D /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		1F57E16D1191020100947E6D /* LabelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelParser.h; sourceTree = "<group>"; };
+		1F57E16E1191020100947E6D /* LabelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelParser.m; sourceTree = "<group>"; };
+		1F57E1A711910AC700947E6D /* BaseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseParser.h; sourceTree = "<group>"; };
+		1F57E1A811910AC700947E6D /* BaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseParser.m; sourceTree = "<group>"; };
 		1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAuthenticate.h; sourceTree = "<group>"; };
 		1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthenticate.m; sourceTree = "<group>"; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,20 +82,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1F57E06B118F602400947E6D /* FeedItem.h */,
-				1F57E06C118F602400947E6D /* FeedItem.m */,
-				1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */,
-				1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */,
+				1F57E1641190FFCC00947E6D /* ViewController */,
+				1F57E1631190FFC300947E6D /* XML */,
+				1F57E1621190FFA300947E6D /* Model */,
 				1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */,
 				1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */,
-				086F086C1153FB1700D12F62 /* AuthenticationViewController.h */,
-				086F086D1153FB1700D12F62 /* AuthenticationViewController.m */,
-				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
-				28C286E00D94DF7D0034E888 /* RootViewController.m */,
-				1D3623240D0F684500981E51 /* RSSReaderAppDelegate.h */,
-				1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */,
-				1F57E09C118F788800947E6D /* PreferencesViewController.h */,
-				1F57E09D118F788800947E6D /* PreferencesViewController.m */,
 				1F57E1231190AC6A00947E6D /* Constants.h */,
 			);
 			path = Classes;
@@ -95,6 +98,47 @@
 				1D6058910D05DD3D006BFB54 /* RSSReader.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1F57E1621190FFA300947E6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F57E06B118F602400947E6D /* FeedItem.h */,
+				1F57E06C118F602400947E6D /* FeedItem.m */,
+				1F57E1671191010300947E6D /* Site.h */,
+				1F57E1681191010300947E6D /* Site.m */,
+				1F57E16A1191015C00947E6D /* Entry.h */,
+				1F57E16B1191015C00947E6D /* Entry.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F57E1631190FFC300947E6D /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				1F57E16D1191020100947E6D /* LabelParser.h */,
+				1F57E16E1191020100947E6D /* LabelParser.m */,
+				1F57E1A711910AC700947E6D /* BaseParser.h */,
+				1F57E1A811910AC700947E6D /* BaseParser.m */,
+			);
+			name = XML;
+			sourceTree = "<group>";
+		};
+		1F57E1641190FFCC00947E6D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				086F086C1153FB1700D12F62 /* AuthenticationViewController.h */,
+				086F086D1153FB1700D12F62 /* AuthenticationViewController.m */,
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				1D3623240D0F684500981E51 /* RSSReaderAppDelegate.h */,
+				1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */,
+				1F57E09C118F788800947E6D /* PreferencesViewController.h */,
+				1F57E09D118F788800947E6D /* PreferencesViewController.m */,
+				1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */,
+				1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -211,6 +255,10 @@
 				1F41D53111813DE700756AB5 /* BaseGoogleViewController.m in Sources */,
 				1F57E06D118F602400947E6D /* FeedItem.m in Sources */,
 				1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */,
+				1F57E1691191010300947E6D /* Site.m in Sources */,
+				1F57E16C1191015C00947E6D /* Entry.m in Sources */,
+				1F57E16F1191020100947E6D /* LabelParser.m in Sources */,
+				1F57E1A911910AC700947E6D /* BaseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

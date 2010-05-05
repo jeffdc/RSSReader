@@ -19,12 +19,13 @@
 	
 @private
 	GoogleAuthenticate* ga;
+	bool initalized;
 }
 
 -(void)authenticate;
 -(void)settingsClick:(id) sender;
 
--(void)postViewAppeared;
+-(void)authencationComplete;
 
 @property (nonatomic, retain) NSString *sid;
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;
