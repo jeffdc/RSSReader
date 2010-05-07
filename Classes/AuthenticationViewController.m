@@ -15,7 +15,7 @@
 @synthesize msg, usernameField, passwordField, sid, authenticated, delegate, ga;
 
 - (void)dealloc {
-	[ga dealloc];
+	[ga release];
 	
     [super dealloc];
 }
