@@ -12,4 +12,8 @@
 	NSMutableArray* entries;
 }
 
+@property(nonatomic, retain) NSString* title;
+@property(nonatomic, retain) NSURL* url;
+@property(nonatomic, retain) NSMutableArray* entries;
+
 @end

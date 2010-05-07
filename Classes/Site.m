@@ -11,4 +11,6 @@
 
 @implementation Site
 
+@synthesize title, url, entries;
+
 @end

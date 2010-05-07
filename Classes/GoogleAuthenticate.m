@@ -20,25 +20,21 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 
 @implementation GoogleAuthenticate
 
-@synthesize userName, password, SID, authenticated, failureReason, failureDescription, responseData, conn, delegate;
+@synthesize userName, password, SID, authenticated, failureReason, failureDescription, responseData, delegate;
 
 - (void) dealloc {
-	userName = nil;
-	password = nil;
-	failureReason = nil;
-	failureDescription = nil;
-	SID = nil;
+	[userName release];
+	[password release];
+	[SID release];
+	[failureReason release];
+	[failureDescription release];
+	[responseData release];
+	
 	[super dealloc];
 }
 
 - (id) initWithDelegate:(id<GoogleAuthenticateDelegate>) theDelegate {
-	self = [super init];
-	if (nil != self) {
-		self.authenticated = NO;
-		self.delegate = theDelegate;
-	}
-	
-	return self;
+	return [self initWithUserName:nil password:nil delegate:theDelegate];
 }
 
 - (id)initWithUserName:(NSString *)newUserName password:(NSString *)newPassword delegate:(id<GoogleAuthenticateDelegate>) theDelegate; {
@@ -72,15 +68,18 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 		
 		[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
 		
-		conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+		NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 		if (!conn) {
 			// error could not create request
 			self.failureReason = @"Failed to connect to Google.";
 			self.failureDescription = @"The Google server is not responding or you do not have a network connection.";
 			[self.delegate authenticationFailed: self];
-			return;
+		} else {
+			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 		}
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];		
+		[request release];
+		[requestBody release];
+		[conn release];
 	}
 }
 
@@ -122,7 +121,6 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
 	[responseData release];
-    [connection release];
 	failureReason = [error localizedFailureReason];
 	failureDescription = [error localizedDescription];
 	NSLog(@"%s", failureReason);
@@ -134,9 +132,8 @@ static NSString *const APP_ID = @"nothoo-tester-1.0";
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
-	self.SID = [self parseSID:[[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease]];
+	self.SID = [self parseSID:[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]];
 	
-	[connection release];
 	[self.responseData release];
 	self.authenticated = YES;
 	[self.delegate authenticationComplete: self];

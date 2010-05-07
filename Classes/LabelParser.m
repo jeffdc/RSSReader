@@ -7,20 +7,30 @@
 //
 
 #import "LabelParser.h"
-
+#import "FeedItem.h"
 
 @implementation LabelParser
 
--(void) init:(id) {
-	self.url = [NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"];
+@synthesize isId, term;
+
+-(void) dealloc {
+	[term release];
+	[super dealloc];
+}
+
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate {
+	self = [super initWithDelegate:theDelegate];
+	if (nil != self) {
+		self.url = [NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"];
+	}
+	return self;
 }
 
 #pragma mark -
 #pragma mark Parser methods
 -(void)parserDidStartDocument:(NSXMLParser *)parser {
-	isEntry = NO;
-	isLabel = NO;
-	foundTitle = NO;
+	self.isId = NO;
+	self.term = [[NSMutableString alloc] init];
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
@@ -29,54 +39,43 @@
 	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
 	if ([elementName isEqualToString:@"html"]) {
 		[parser abortParsing];
-		self.authenticated = NO;
-		[self authenticate];
+
+		//TODO: add error protocol so that the delegate can authenticate and retry if desired.
 		return;
 	}
 	
-	if ([elementName isEqualToString:@"entry"]) {
-		isEntry = YES;
-	}
-	
-	if ([elementName isEqualToString:@"category"] && isEntry) {
-		NSString* term = [attributeDict objectForKey:@"term"];
-		NSArray* things = [term componentsSeparatedByString:@"/"];
-		if ([things count] == 4 && [[things objectAtIndex:[things count] - 2] isEqualToString:@"label"]) {
-			// found a label
-			NSString* label = [things objectAtIndex:[things count] - 1];
-			FeedItem* item = [[FeedItem alloc] initWithTitle:label isLabel:YES];
-			[feedTitles setValue:item forKey:label];
-			isLabel = YES;
-		}
-	}
-	
-	if ([elementName isEqualToString:@"title"] && isEntry && !isLabel) {
-		foundTitle = YES;
-		currentTitle = [[[NSMutableString alloc] init] autorelease];
+	if ([elementName isEqualToString:@"string"]) {
+		NSString* attrib = [attributeDict objectForKey:@"name"];
+		self.isId = [attrib isEqualToString:@"id"];
 	}
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	if (foundTitle) {
-		[currentTitle appendString:string];	
+	if (isId) {
+		[term appendString:string];	
 	}
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if (foundTitle) {
-		FeedItem* item = [[FeedItem alloc] initWithTitle:currentTitle isLabel:NO];
-		[feedTitles setValue:item forKey:currentTitle];
-		foundTitle = NO;
-	}
-	
-	if ([elementName isEqualToString:@"entry"]) {
-		isEntry = NO;
-		isLabel = NO;
-	}
+	if (isId) {
+		NSArray* things = [term componentsSeparatedByString:@"/"];
+		if ([things count] == 4 && [[things objectAtIndex:[things count] - 2] isEqualToString:@"label"]) {
+			// found a label
+			NSString* label = [things objectAtIndex:[things count] - 1];
+
+			FeedItem* item = [[FeedItem alloc] initWithTitle:label isLabel:YES];
+			[parsedData setValue:item forKey:label];
+			[item release];
+			
+			NSLog(@"LABEL = '%@'", label);
+		}
+		self.isId = NO;
+		[term setString:@""];
+	}	
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	[self.delegate parsingComplete:[NSDictionary dictionaryWithDictionary:mainXMLData]];
+	[self.delegate parsingComplete:[NSDictionary dictionaryWithDictionary:parsedData] parser:self];
 }
 
 @end
