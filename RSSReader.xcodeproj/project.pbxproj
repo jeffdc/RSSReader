@@ -13,6 +13,10 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1F01B2111196301000FA45E0 /* FeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F01B20F1196301000FA45E0 /* FeedsViewController.m */; };
+		1F01B2121196301000FA45E0 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F01B2101196301000FA45E0 /* FeedsViewController.xib */; };
+		1F01B2161196305B00FA45E0 /* EntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F01B2141196305B00FA45E0 /* EntriesViewController.m */; };
+		1F01B2171196305B00FA45E0 /* EntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F01B2151196305B00FA45E0 /* EntriesViewController.xib */; };
 		1F41D53111813DE700756AB5 /* BaseGoogleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */; };
 		1F57E06D118F602400947E6D /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E06C118F602400947E6D /* FeedItem.m */; };
 		1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E09D118F788800947E6D /* PreferencesViewController.m */; };
@@ -37,6 +41,12 @@
 		1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSReaderAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F01B20E1196301000FA45E0 /* FeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsViewController.h; sourceTree = "<group>"; };
+		1F01B20F1196301000FA45E0 /* FeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsViewController.m; sourceTree = "<group>"; };
+		1F01B2101196301000FA45E0 /* FeedsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FeedsViewController.xib; path = Classes/FeedsViewController.xib; sourceTree = "<group>"; };
+		1F01B2131196305B00FA45E0 /* EntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesViewController.h; sourceTree = "<group>"; };
+		1F01B2141196305B00FA45E0 /* EntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesViewController.m; sourceTree = "<group>"; };
+		1F01B2151196305B00FA45E0 /* EntriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EntriesViewController.xib; path = Classes/EntriesViewController.xib; sourceTree = "<group>"; };
 		1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGoogleViewController.h; sourceTree = "<group>"; };
 		1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGoogleViewController.m; sourceTree = "<group>"; };
 		1F57E06B118F602400947E6D /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
@@ -137,6 +147,10 @@
 				1F57E09D118F788800947E6D /* PreferencesViewController.m */,
 				1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */,
 				1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */,
+				1F01B20E1196301000FA45E0 /* FeedsViewController.h */,
+				1F01B20F1196301000FA45E0 /* FeedsViewController.m */,
+				1F01B2131196305B00FA45E0 /* EntriesViewController.h */,
+				1F01B2141196305B00FA45E0 /* EntriesViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -165,6 +179,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F01B2151196305B00FA45E0 /* EntriesViewController.xib */,
+				1F01B2101196301000FA45E0 /* FeedsViewController.xib */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* RSSReader-Info.plist */,
@@ -237,6 +253,8 @@
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				086F08681153F88200D12F62 /* AuthenticationView.xib in Resources */,
 				1F57E0A3118F7A2400947E6D /* PreferencesView.xib in Resources */,
+				1F01B2121196301000FA45E0 /* FeedsViewController.xib in Resources */,
+				1F01B2171196305B00FA45E0 /* EntriesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +277,8 @@
 				1F57E16C1191015C00947E6D /* Entry.m in Sources */,
 				1F57E16F1191020100947E6D /* LabelParser.m in Sources */,
 				1F57E1A911910AC700947E6D /* BaseParser.m in Sources */,
+				1F01B2111196301000FA45E0 /* FeedsViewController.m in Sources */,
+				1F01B2161196305B00FA45E0 /* EntriesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

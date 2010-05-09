@@ -10,6 +10,8 @@
 #import "AuthenticationViewController.h"
 #import "FeedItem.h"
 #import "LabelParser.h"
+#import "FeedsViewController.h"
+#import "EntriesViewController.h"
 
 static int const TOTAL_PARSERS = 1;
 
@@ -19,7 +21,7 @@ static int const TOTAL_PARSERS = 1;
 
 @implementation RootViewController
 
-@synthesize labels, starred, feeds, tableData, mainXMLData, foundTitle, isEntry, isLabel;
+@synthesize labels, starred, feeds, tableData, mainXMLData, foundTitle, isEntry, isLabel, feedsVC, entriesVC;
 
 - (void)dealloc {
 	[labels release];
@@ -67,6 +69,8 @@ static int const TOTAL_PARSERS = 1;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
+	self.title = @"Reader Feeder";
+	
 	if (authenticated) {
 		[self getXML];
 	}
@@ -105,7 +109,15 @@ static int const TOTAL_PARSERS = 1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//	[self navigationController pushViewController:childController animates:YES];
+	FeedItem* item = [tableData objectForKey:[[tableData allKeys] objectAtIndex:indexPath.row]];
+	if (item.isLabel) {
+		feedsVC.data = tableData;
+		feedsVC.title = item.title;
+		[[self navigationController] pushViewController:feedsVC animated:YES];
+	} else {
+		entriesVC.data = tableData;
+		[[self navigationController] pushViewController:entriesVC animated:YES];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
