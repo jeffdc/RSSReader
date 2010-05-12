@@ -23,7 +23,6 @@
 	
 	@private
 	NSMutableData *responseData;
-	NSURLConnection *conn;
 	id<GoogleAuthenticateDelegate> delegate;
 }
 
@@ -40,6 +39,5 @@
 @property(nonatomic, retain) NSString *failureReason;
 @property(nonatomic, retain) NSString *failureDescription;
 @property(nonatomic, retain) NSMutableData *responseData;
-@property(nonatomic, retain) NSURLConnection *conn;
 @property(assign) id<GoogleAuthenticateDelegate> delegate;
 @end

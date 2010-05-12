@@ -69,7 +69,7 @@
 
 
 - (void)dealloc {
-	[toolbar dealloc];
+	[toolbar release];
     [super dealloc];
 }
 

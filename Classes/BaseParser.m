@@ -8,19 +8,47 @@
 
 #import "BaseParser.h"
 
+@interface BaseParser ()
+-(void)parse;
+@end
 
 @implementation BaseParser
 
+@synthesize delegate, url, mainXmlData, parsedData;
+
+-(void) dealloc {
+	[parsedData release];
+	[url release];
+	[mainXmlData release];
+	[super dealloc];
+}
+
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate {
+	self = [super init];
+	if (nil != self) {
+		self.delegate = theDelegate;
+		parsedData = [[NSMutableDictionary alloc] init];
+	}
+
+	return self;
+}
+
 -(void) parse {
+	NSLog(@"parse");
+	// make sure the proper cookie is set
+	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
+		NSLog(@"No google cookie set!");
+	}
+	
 	NSURLRequest *request = [[NSURLRequest alloc]initWithURL:self.url];
 	
 	NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
 	[request release];
-	[conn release]; //nil out also?
+	[conn release];
 }
 
 -(void) startParsing {
-	NSXMLParser *mainXMLDataParser = [[NSXMLParser alloc] initWithData:mainXMLData];
+	NSXMLParser *mainXMLDataParser = [[NSXMLParser alloc] initWithData:mainXmlData];
 	mainXMLDataParser.delegate = self;
 	[mainXMLDataParser parse];
 	[mainXMLDataParser release];
@@ -29,7 +57,7 @@
 #pragma mark -
 #pragma mark Connection methods
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[mainXMLData appendData:data];
+	[mainXmlData appendData:data];
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -39,7 +67,7 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-//	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
+//	NSString *s = [[NSString alloc] initWithData:mainXmlData encoding:NSASCIIStringEncoding];
 //	NSLog(@"%@", s);
 //	[s release];
 	[self startParsing];
@@ -59,7 +87,7 @@
 			
 		    //TODO: handle errors more appropriately
 		} else {
-			self.mainXMLData = [[NSMutableData alloc] init];
+			self.mainXmlData = [[NSMutableData alloc] init];
 		}
 		
 	}

@@ -19,3 +19,4 @@
 @property (nonatomic, retain) NSMutableArray* entries;
 
 @end
+

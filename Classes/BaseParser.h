@@ -10,14 +10,22 @@
 
 @interface BaseParser : NSObject {
 	NSURL* url;
-	NSMutableData *mainXMLData;
+	NSMutableData *mainXmlData;
 	NSMutableDictionary* parsedData;
-	<id> ParserDelegate delegate;
+	id<ParserDelegate> delegate;
 }
 
 -(void) parse;
 -(void) startParsing;
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate;
+
+@property(assign) id<ParserDelegate> delegate;
+@property(nonatomic, retain) NSURL* url;
+@property(nonatomic, retain) NSMutableData* mainXmlData;
+@property(nonatomic, retain) NSMutableDictionary* parsedData;
+
+@end
 
 @protocol ParserDelegate
--(void) parsingComplete:(NSDictionary*);
+-(void) parsingComplete:(NSDictionary*) data parser:(BaseParser*)theParser;
 @end

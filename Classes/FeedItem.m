@@ -18,7 +18,7 @@
 		self.title = theTitle;
 	}
 	
-	sites = [[NSMutableArray alloc] init];
+	self.sites = [[NSMutableArray alloc] init];
 	
 	return self;
 }

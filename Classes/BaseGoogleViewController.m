@@ -23,10 +23,10 @@
 @synthesize sid, sidCookie, authenticated, ga;
 
 - (void) dealloc {
-	[ga dealloc];
-	[sid dealloc];
-	[sidCookie dealloc];
-	[toolbar dealloc];
+	[ga release];
+	[sid release];
+	[sidCookie release];
+	[toolbar release];
 	[super dealloc];
 }
 

@@ -9,132 +9,77 @@
 #import "RootViewController.h"
 #import "AuthenticationViewController.h"
 #import "FeedItem.h"
+#import "LabelParser.h"
+#import "FeedsViewController.h"
+#import "EntriesViewController.h"
+
+static int const TOTAL_PARSERS = 1;
 
 @interface RootViewController ()
 -(void)getXML;
--(void)startParsingXML;
 @end
 
 @implementation RootViewController
 
-@synthesize feedTitles, currentTitle, mainXMLData, foundTitle, isEntry, isLabel;
+@synthesize labels, starred, feeds, tableData, mainXMLData, foundTitle, isEntry, isLabel, feedsVC, entriesVC;
 
 - (void)dealloc {
-	[currentTitle dealloc];
-	[feedTitles dealloc];
+	[labels release];
+	[starred release];
+	[feeds release];
+	[tableData release];
     [super dealloc];
 }
 
 -(void)getXML {
-	// make sure the proper cookie is set
-	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
-		NSLog(@"No google cookie set!");
+	LabelParser* lp = [[LabelParser alloc] initWithDelegate:self];
+	[lp parse];
+	[lp release];
+}
+
+#pragma mark Parser delegate methods
+-(void) parsingComplete:(NSDictionary*) data parser:(BaseParser*)theParser {
+	@synchronized(theParser) {
+		if ([theParser isKindOfClass:[LabelParser class]]) {
+			self.labels = [NSMutableDictionary dictionaryWithDictionary:data];
+			++parserCount;
+		}
+//		if ([theParser isKindOfClass:[StarredParser class]]) {
+//			self.starred = [NSMutableDictionary dictionaryWithDictionary:data];
+//			++parserCount;
+//		}
+//		if ([theParser isKindOfClass:[FeedsParser class]]) {
+//			self.feeds = [NSMutableDictionary dictionaryWithDictionary:data];
+//			++parserCount;
+//		}
 	}
-
-	NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
-						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
-						  [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"], [[TagParser alloc] init],
-						  nil];
-						  
-	// loop through static Dictionary of URL->Parser
-	
-		NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/reading-list"];
-	//	NSURL *url = [NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"];
-
-
-	NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url]; //use an NSMutableRequest so it can be reused?
-	
-	NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-	[request release];
-	[conn release]; //nil out also?
+	if (parserCount == TOTAL_PARSERS) {
+		parserCount = 0;
+		self.tableData = [[NSMutableDictionary alloc] initWithCapacity:[starred count] + [labels count] + [feeds count]];
+		[tableData addEntriesFromDictionary:starred];
+		[tableData addEntriesFromDictionary:labels];
+		[tableData addEntriesFromDictionary:feeds];
+		
+		[self.tableView reloadData];
+	}
 }
 
--(void)startParsingXML {
-	NSXMLParser *mainXMLDataParser = [[NSXMLParser alloc] initWithData:mainXMLData];
-	mainXMLDataParser.delegate = self;
-	[mainXMLDataParser parse];
-	[mainXMLDataParser release];
-}
 
 #pragma mark ViewController methods
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	if (self.authenticated) {
+	self.title = @"Reader Feeder";
+	
+	if (authenticated) {
 		[self getXML];
 	}
-	feedTitles = [[NSMutableDictionary alloc] init];
 }
 
 -(void)authencationComplete {
 	[self getXML];
 }
 
-#pragma mark -
-#pragma mark Parser methods
--(void)parserDidStartDocument:(NSXMLParser *)parser {
-	isEntry = NO;
-	isLabel = NO;
-	foundTitle = NO;
-}
-
--(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
-			qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-	
-	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
-	if ([elementName isEqualToString:@"html"]) {
-		[parser abortParsing];
-		self.authenticated = NO;
-		[self authenticate];
-		return;
-	}
-
-	if ([elementName isEqualToString:@"entry"]) {
-		isEntry = YES;
-	}
-	
-	if ([elementName isEqualToString:@"category"] && isEntry) {
-		NSString* term = [attributeDict objectForKey:@"term"];
-		NSArray* things = [term componentsSeparatedByString:@"/"];
-		if ([things count] == 4 && [[things objectAtIndex:[things count] - 2] isEqualToString:@"label"]) {
-			// found a label
-			NSString* label = [things objectAtIndex:[things count] - 1];
-			FeedItem* item = [[FeedItem alloc] initWithTitle:label isLabel:YES];
-			[feedTitles setValue:item forKey:label];
-			isLabel = YES;
-		}
-	}
-
-	if ([elementName isEqualToString:@"title"] && isEntry && !isLabel) {
-		foundTitle = YES;
-		currentTitle = [[[NSMutableString alloc] init] autorelease];
-	}
-}`
-
--(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	if (foundTitle) {
-		[currentTitle appendString:string];	
-	}
-}
-
--(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if (foundTitle) {
-		FeedItem* item = [[FeedItem alloc] initWithTitle:currentTitle isLabel:NO];
-		[feedTitles setValue:item forKey:currentTitle];
-		foundTitle = NO;
-	}
-	
-	if ([elementName isEqualToString:@"entry"]) {
-		isEntry = NO;
-		isLabel = NO;
-	}
-}
-
--(void)parserDidEndDocument:(NSXMLParser *)parser {
-	// refresh the table
-	[self.tableView reloadData];
-}
 
 #pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -144,8 +89,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSLog(@"count = '%d'", [feedTitles count]);
-    return [feedTitles count];
+    return [tableData count];
 }
 
 // Customize the appearance of table view cells.
@@ -159,53 +103,21 @@
     
 	// Configure the cell.
 	//	NSLog(@"Keys = '%@'", [self.feedTitles allKeys]);
-	cell.textLabel.text = [[self.feedTitles allKeys] objectAtIndex:indexPath.row];
+	NSString* item = [[tableData allKeys] objectAtIndex:indexPath.row];
+	cell.textLabel.text = item;
 	
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	
-	//	[self navigationController pushViewController:childController animates:YES];
-}
-
-#pragma mark -
-#pragma mark Connection methods
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[mainXMLData appendData:data];
-}
-
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[errorAlert show];
-	[errorAlert release];
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSString *s = [[NSString alloc] initWithData:mainXMLData encoding:NSASCIIStringEncoding];
-	NSLog(@"%@", s);
-	[s release];
-	[self startParsingXML];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	
-	if ([response respondsToSelector:@selector(statusCode)])
-	{
-		int statusCode = [((NSHTTPURLResponse *)response) statusCode];
-		if (statusCode >= 400)
-		{
-			NSLog(@"Received HTTP status code %i", statusCode);
-			
-			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];		
-			[connection cancel];
-			
-		    //TODO: handle errors more appropriately
-		} else {
-			self.mainXMLData = [[NSMutableData alloc] init];
-		}
-		
+	FeedItem* item = [tableData objectForKey:[[tableData allKeys] objectAtIndex:indexPath.row]];
+	if (item.isLabel) {
+		feedsVC.data = tableData;
+		feedsVC.title = item.title;
+		[[self navigationController] pushViewController:feedsVC animated:YES];
+	} else {
+		entriesVC.data = tableData;
+		[[self navigationController] pushViewController:entriesVC animated:YES];
 	}
 }
 

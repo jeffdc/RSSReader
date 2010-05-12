@@ -8,21 +8,32 @@
 //
 
 #import "BaseGoogleViewController.h"
+#import "FeedsViewController.h"
+#import "EntriesViewController.h"
 
 @interface RootViewController : BaseGoogleViewController {
-	NSMutableData *mainXMLData;
-	NSMutableDictionary *feedTitles;
-	NSMutableString *currentTitle;
+	NSMutableData* mainXMLData;
+	NSDictionary* labels;
+	NSDictionary* starred;
+	NSDictionary* feeds;
 	bool foundTitle;
+	FeedsViewController* feedsVC;
+	EntriesViewController* entriesVC;
 	
 	@private 
 	bool isEntry;
 	bool isLabel;
+	int parserCount;
+	NSMutableDictionary* tableData;
 }
 
-@property (nonatomic, retain) NSMutableDictionary *feedTitles;
-@property (nonatomic, retain) NSMutableString *currentTitle;
+@property (nonatomic, retain) NSDictionary *labels;
+@property (nonatomic, retain) NSDictionary *starred;
+@property (nonatomic, retain) NSDictionary *feeds;
 @property (nonatomic, retain) NSMutableData *mainXMLData;
+@property (nonatomic, retain) NSMutableDictionary* tableData;
+@property (nonatomic, retain) IBOutlet FeedsViewController *feedsVC;
+@property (nonatomic, retain) IBOutlet EntriesViewController *entriesVC;
 @property bool foundTitle;
 @property bool isEntry;
 @property bool isLabel;
