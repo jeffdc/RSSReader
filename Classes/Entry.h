@@ -18,12 +18,12 @@
 }
 
 - (id) initWithTitle:(NSString*)entryTitle entryDate:(NSDate*)entryDate entryAuthor:(NSString*)entryAuthor 
-								entryHTML:(NSData*)entryHTML entrySiteName(NSString*):entrySiteName entryURL:(NSURL*)entryURL;
+		   entryHTML:(NSData*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL;
 
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSDate* date;
 @property (nonatomic, retain) NSString* author;
-@property (nonatomic, retain) NSData* html;
+@property (nonatomic, retain) NSString* html;
 @property (nonatomic, retain) NSString* siteName;
 @property (nonatomic, retain) NSURL* url;
 

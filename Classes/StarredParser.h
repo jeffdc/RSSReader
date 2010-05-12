@@ -25,12 +25,14 @@
 	BOOL foundEntryAuthor;
 	BOOL foundEntryURL;
 	BOOL foundEntryHTML;
+	BOOL foundEntryUpdatedDate;
 	
 	NSDictionary* linkAttributeDict;
-	NSString* currentEntryTitle;
-	NSString* currentSiteTitle;
-	NSString* currentEntryAuthor;
-	NSString* currentEntryHTML;
+	NSMutableString* currentEntryTitle;
+	NSMutableString* currentSiteTitle;
+	NSMutableString* currentEntryAuthor;
+	NSMutableString* currentEntryHTML;
+	NSMutableString* currentEntryUpdatedDate;
 }
 
 @end

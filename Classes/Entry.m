@@ -14,7 +14,7 @@
 @synthesize title, date, author, html, siteName, url;
 
 - (id) initWithTitle:(NSString*)entryTitle entryDate:(NSDate*)entryDate entryAuthor:(NSString*)entryAuthor 
-		   entryHTML:(NSString*)entryHTML entrySiteName(NSString*):entrySiteName entryURL:(NSURL*)entryURL{
+		   entryHTML:(NSString*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL{
 	self = [super init];
 	
 	if (nil != self) {
