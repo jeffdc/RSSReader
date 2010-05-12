@@ -17,4 +17,5 @@
 @property bool isLabel;
 @property(nonatomic, retain) NSString* title;
 @property(nonatomic, retain) NSMutableArray* sites;
+
 @end

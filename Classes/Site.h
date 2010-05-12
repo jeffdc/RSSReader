@@ -12,4 +12,10 @@
 	NSMutableArray* entries;
 }
 
+- (id) initWithName:(NSString*)name URL:(NSURL*)URL siteEntries:(NSMutableArray*)siteEntries;
+
+@property (nonatomic, retain) NSString* title;
+@property (nonatomic, retain) NSURL* url;
+@property (nonatomic, retain) NSMutableArray* entries;
+
 @end

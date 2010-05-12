@@ -110,7 +110,7 @@
 		foundTitle = YES;
 		currentTitle = [[[NSMutableString alloc] init] autorelease];
 	}
-}
+}`
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
 	if (foundTitle) {
