@@ -7,26 +7,52 @@
 //
 
 #import "FeedsViewController.h"
+#import "FeedParser.h"
 
+@interface FeedsViewController ()
+-(void)getXml;
+@end
 
 @implementation FeedsViewController
 
-@synthesize data;
+@synthesize tableData;
+
+-(void) dealloc {
+	[tableData release];
+	[super dealloc];
+}
+
+-(void) getXml {
+	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/reader/atom/user/-/label/%@", self.title]];
+	FeedParser* fp = [[FeedParser alloc] initWithDelegate:self];
+	fp.url = url;
+	[fp parse];
+	[fp release];
+	
+}
+
+#pragma mark Parser delegate methods
+-(void) parsingComplete:(NSDictionary*) data parser:(BaseParser*)theParser {
+	self.tableData = data;
+	// do we need retain here?
+}
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	// get the feeds for the given label, the label is the title
+	if (authenticated) {
+		[self getXml];
+	}
+	
 }
-*/
+
+-(void)authencationComplete {
+	[self getXml];
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -158,11 +184,4 @@
     // For example: self.myOutlet = nil;
 }
 
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-
 @end
-

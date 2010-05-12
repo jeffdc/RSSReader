@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseGoogleViewController.h"
 
-
-@interface FeedsViewController : UITableViewController {
-	NSDictionary* data;
+@interface FeedsViewController : BaseGoogleViewController {
+	NSDictionary* tableData;
 }
 
-@property(nonatomic, retain) NSDictionary* data;
+@property(nonatomic, retain) NSDictionary* tableData;
 
 @end

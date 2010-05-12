@@ -17,6 +17,7 @@ static int const TOTAL_PARSERS = 1;
 
 @interface RootViewController ()
 -(void)getXML;
+-(void)populateTableData;
 @end
 
 @implementation RootViewController
@@ -37,29 +38,33 @@ static int const TOTAL_PARSERS = 1;
 	[lp release];
 }
 
+-(void)populateTableData {
+	self.tableData = [[NSMutableDictionary alloc] initWithCapacity:[starred count] + [labels count] + [feeds count]];
+	[tableData addEntriesFromDictionary:starred];
+	[tableData addEntriesFromDictionary:labels];
+	[tableData addEntriesFromDictionary:feeds];	
+}
+
 #pragma mark Parser delegate methods
 -(void) parsingComplete:(NSDictionary*) data parser:(BaseParser*)theParser {
-	@synchronized(theParser) {
-		if ([theParser isKindOfClass:[LabelParser class]]) {
-			self.labels = [NSMutableDictionary dictionaryWithDictionary:data];
-			++parserCount;
-		}
-//		if ([theParser isKindOfClass:[StarredParser class]]) {
-//			self.starred = [NSMutableDictionary dictionaryWithDictionary:data];
-//			++parserCount;
-//		}
-//		if ([theParser isKindOfClass:[FeedsParser class]]) {
-//			self.feeds = [NSMutableDictionary dictionaryWithDictionary:data];
-//			++parserCount;
-//		}
+	// This method needs work. 
+	// The conditional checks based on kindOfClass is hideous and looks like noob OO
+	// The check for parserCount seems very kludgey
+	@synchronized(self) {
+		++parserCount;
 	}
+	if ([theParser isKindOfClass:[LabelParser class]]) {
+			self.labels = [NSMutableDictionary dictionaryWithDictionary:data];
+	}
+//	if ([theParser isKindOfClass:[StarredParser class]]) {
+//		self.starred = [NSMutableDictionary dictionaryWithDictionary:data];
+//	}
+//	if ([theParser isKindOfClass:[FeedsParser class]]) {
+//		self.feeds = [NSMutableDictionary dictionaryWithDictionary:data];
+//	}
 	if (parserCount == TOTAL_PARSERS) {
 		parserCount = 0;
-		self.tableData = [[NSMutableDictionary alloc] initWithCapacity:[starred count] + [labels count] + [feeds count]];
-		[tableData addEntriesFromDictionary:starred];
-		[tableData addEntriesFromDictionary:labels];
-		[tableData addEntriesFromDictionary:feeds];
-		
+		[self populateTableData];
 		[self.tableView reloadData];
 	}
 }
@@ -111,7 +116,7 @@ static int const TOTAL_PARSERS = 1;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	FeedItem* item = [tableData objectForKey:[[tableData allKeys] objectAtIndex:indexPath.row]];
 	if (item.isLabel) {
-		feedsVC.data = tableData;
+		feedsVC.tableData = tableData;
 		feedsVC.title = item.title;
 		[[self navigationController] pushViewController:feedsVC animated:YES];
 	} else {

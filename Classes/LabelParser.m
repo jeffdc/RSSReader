@@ -19,11 +19,7 @@
 }
 
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate {
-	self = [super initWithDelegate:theDelegate];
-	if (nil != self) {
-		self.url = [NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"];
-	}
-	return self;
+	return [super initWithDelegate:theDelegate url:[NSURL URLWithString:@"http://www.google.com/reader/api/0/tag/list"]];
 }
 
 #pragma mark -
@@ -36,17 +32,11 @@
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
 		qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
-	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
-	if ([elementName isEqualToString:@"html"]) {
-		[parser abortParsing];
-
-		//TODO: add error protocol so that the delegate can authenticate and retry if desired.
-		return;
-	}
-	
-	if ([elementName isEqualToString:@"string"]) {
-		NSString* attrib = [attributeDict objectForKey:@"name"];
-		self.isId = [attrib isEqualToString:@"id"];
+	if (![self isHtml:elementName aParser:parser]) {
+		if ([elementName isEqualToString:@"string"]) {
+			NSString* attrib = [attributeDict objectForKey:@"name"];
+			self.isId = [attrib isEqualToString:@"id"];
+		}
 	}
 }
 

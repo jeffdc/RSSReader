@@ -23,10 +23,11 @@
 	[super dealloc];
 }
 
--(id) initWithDelegate:(id<ParserDelegate>) theDelegate {
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate url:(NSURL*)theUrl {
 	self = [super init];
 	if (nil != self) {
 		self.delegate = theDelegate;
+		self.url = theUrl;
 		parsedData = [[NSMutableDictionary alloc] init];
 	}
 
@@ -54,6 +55,16 @@
 	[mainXMLDataParser release];
 }
 
+-(bool) isHtml:(NSString*)elementName aParser:(NSXMLParser*)parser {
+	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
+	if ([elementName isEqualToString:@"html"]) {
+		[parser abortParsing];
+		
+		//TODO: add error protocol so that the delegate can authenticate and retry if desired.
+		return YES;
+	}
+	return NO;
+}
 #pragma mark -
 #pragma mark Connection methods
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
