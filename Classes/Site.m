@@ -13,4 +13,25 @@
 
 @synthesize title, url, entries;
 
+- (id) initWithName:(NSString*)name URL:(NSURL*)URL siteEntries:(NSMutableArray*)siteEntries;{
+	self = [super init];
+	
+	if (nil != self) {
+		self.title = name;
+		self.url = URL;
+		self.entries = siteEntries;
+	}
+	entries = [[NSMutableArray alloc] init];
+	
+	return self;
+}
+
+- (void) dealloc {
+	[entries release];
+	[title release];
+	[url release];
+	
+	[super dealloc];
+}
+
 @end

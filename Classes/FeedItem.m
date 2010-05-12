@@ -11,15 +11,7 @@
 @implementation FeedItem
 @synthesize isLabel, title, sites;
 
-- (void) dealloc {
-	[title release];
-	[sites release];
-	
-	[super dealloc];
-}
-
-
-- (id) initWithTitle:(NSString*)theTitle isLabel:(bool)theIslabel {
+- (id) initWithTitle:(NSString*)theTitle isLabel:(BOOL)theIslabel { 
 	self = [super init];
 	if (nil != self) {
 		self.isLabel = theIslabel;
@@ -29,6 +21,13 @@
 	self.sites = [[NSMutableArray alloc] init];
 	
 	return self;
+}
+
+- (void) dealloc {
+	[title release];
+	[sites release];
+	
+	[super dealloc];
 }
 
 @end

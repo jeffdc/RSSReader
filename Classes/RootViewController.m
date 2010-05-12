@@ -85,6 +85,7 @@ static int const TOTAL_PARSERS = 1;
 	[self getXML];
 }
 
+
 #pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

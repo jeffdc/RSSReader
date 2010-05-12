@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		086F08681153F88200D12F62 /* AuthenticationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086F08671153F88200D12F62 /* AuthenticationView.xib */; };
 		086F086E1153FB1700D12F62 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086F086D1153FB1700D12F62 /* AuthenticationViewController.m */; };
+		087C3AC51192087900F12284 /* StarredParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 087C3AC41192087900F12284 /* StarredParser.m */; };
 		1D3623260D0F684500981E51 /* RSSReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -37,6 +38,8 @@
 		086F08671153F88200D12F62 /* AuthenticationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationView.xib; sourceTree = "<group>"; };
 		086F086C1153FB1700D12F62 /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
 		086F086D1153FB1700D12F62 /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
+		087C3AC31192087900F12284 /* StarredParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredParser.h; sourceTree = "<group>"; };
+		087C3AC41192087900F12284 /* StarredParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredParser.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* RSSReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSReaderAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* RSSReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSReaderAppDelegate.m; sourceTree = "<group>"; };
@@ -129,12 +132,14 @@
 		1F57E1631190FFC300947E6D /* XML */ = {
 			isa = PBXGroup;
 			children = (
-				1F57E16D1191020100947E6D /* LabelParser.h */,
-				1F57E16E1191020100947E6D /* LabelParser.m */,
 				1F57E1A711910AC700947E6D /* BaseParser.h */,
 				1F57E1A811910AC700947E6D /* BaseParser.m */,
 				1F01B2A21197A33000FA45E0 /* FeedParser.h */,
 				1F01B2A31197A33000FA45E0 /* FeedParser.m */,
+				1F57E16D1191020100947E6D /* LabelParser.h */,
+				1F57E16E1191020100947E6D /* LabelParser.m */,
+				087C3AC31192087900F12284 /* StarredParser.h */,
+				087C3AC41192087900F12284 /* StarredParser.m */,
 			);
 			name = XML;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				1F57E16C1191015C00947E6D /* Entry.m in Sources */,
 				1F57E16F1191020100947E6D /* LabelParser.m in Sources */,
 				1F57E1A911910AC700947E6D /* BaseParser.m in Sources */,
+				087C3AC51192087900F12284 /* StarredParser.m in Sources */,
 				1F01B2111196301000FA45E0 /* FeedsViewController.m in Sources */,
 				1F01B2161196305B00FA45E0 /* EntriesViewController.m in Sources */,
 				1F01B2A41197A33000FA45E0 /* FeedParser.m in Sources */,
