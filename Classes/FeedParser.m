@@ -8,7 +8,6 @@
 
 #import "FeedParser.h"
 
-
 @implementation FeedParser
 
 -(void) dealloc {
