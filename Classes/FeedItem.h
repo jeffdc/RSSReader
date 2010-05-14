@@ -7,14 +7,14 @@
 //
 
 @interface FeedItem : NSObject {
-	bool isLabel;
+	BOOL isLabel;
 	NSString* title;
 	NSMutableArray* sites;
 }
 
-- (id) initWithTitle:(NSString*)theTitle isLabel:(bool)theIslabel;
+- (id) initWithTitle:(NSString*)theTitle forIsLabel:(BOOL)islabel;
 
-@property bool isLabel;
+@property BOOL isLabel;
 @property(nonatomic, retain) NSString* title;
 @property(nonatomic, retain) NSMutableArray* sites;
 

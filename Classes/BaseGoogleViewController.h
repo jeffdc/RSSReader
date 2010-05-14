@@ -15,11 +15,11 @@
 	UIToolbar* toolbar;
 	NSString *sid;
 	NSHTTPCookie *sidCookie;
-	bool authenticated;
+	BOOL authenticated;
 	
 @private
 	GoogleAuthenticate* ga;
-	bool initalized;
+	BOOL initalized;
 }
 
 -(void)authenticate;
@@ -29,7 +29,7 @@
 
 @property (nonatomic, retain) NSString *sid;
 @property (nonatomic, retain) NSHTTPCookie *sidCookie;
-@property bool authenticated;
+@property BOOL authenticated;
 @property(nonatomic, retain) GoogleAuthenticate* ga;
 
 @end

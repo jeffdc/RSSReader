@@ -11,10 +11,10 @@
 @implementation FeedItem
 @synthesize isLabel, title, sites;
 
-- (id) initWithTitle:(NSString*)theTitle isLabel:(BOOL)theIslabel { 
+- (id) initWithTitle:(NSString*)theTitle forIsLabel:(BOOL)islabel { 
 	self = [super init];
 	if (nil != self) {
-		self.isLabel = theIslabel;
+		self.isLabel = islabel;
 		self.title = theTitle;
 	}
 	

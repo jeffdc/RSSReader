@@ -55,7 +55,7 @@
 	[mainXMLDataParser release];
 }
 
--(bool) isHtml:(NSString*)elementName aParser:(NSXMLParser*)parser {
+-(BOOL) isHtml:(NSString*)elementName aParser:(NSXMLParser*)parser {
 	// see if we are actually authenticated to Google, if not then we will be getting HTML, not XML back from the call
 	if ([elementName isEqualToString:@"html"]) {
 		[parser abortParsing];

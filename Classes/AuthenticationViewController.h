@@ -23,7 +23,7 @@
 	IBOutlet UIActivityIndicatorView *activityIndicator;
 
 	NSString *sid;
-	bool authenticated;
+	BOOL authenticated;
 	
 	@private
 	id<AuthenticationViewControllerDelegate> delegate;
@@ -36,7 +36,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) NSString *sid;
-@property bool authenticated;
+@property BOOL authenticated;
 @property (assign) id<AuthenticationViewControllerDelegate> delegate;
 @property(nonatomic, retain) GoogleAuthenticate* ga;
 
