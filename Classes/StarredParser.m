@@ -110,7 +110,7 @@
 		NSDateFormatter *df = [[NSDateFormatter alloc] init];
 		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss z"]; // Can I set the format to something different than what Google Reader uses?
 													// See this site for formatting: http://unicode.org/reports/tr35/#Date_Format_Patterns
-		NSDate *updatedDate = [df dateFromString: myDateAsAStringValue];
+		NSDate *updatedDate = [df dateFromString: currentEntryUpdatedDate];
 		currentEntry.date = updatedDate;
 		foundEntryUpdatedDate = NO;
 		[df release];
