@@ -1,14 +1,5 @@
-The Parser classes will have init params that calculate a mapping to the correct Google Reader URL. To accomplish this
-a Parser can be initialized with one Noun and one Adjective (not all combinations are valid, see below).
 
-Nouns: Site, Feed, Label
-Adjectives: Read, Unread, Kept-Unread, Public, Starred, Fresh
-
-Valid Combinations:
-
-Label - 
-Site - Unread, Kept-Unread
-Feed
+The Parser classes will have init params that calculate a mapping to the correct Google Reader URL. 
 
 A list of all the URL mappings that we will support in the RSSReader:
 
