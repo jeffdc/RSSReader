@@ -8,8 +8,21 @@
 
 #import "BaseParser.h"
 
-@interface FeedParser : BaseParser {
+typedef enum {
+	Starred,
+	All,
+	Unread,
+	Read,
+	KeptUnread,
+	Public,
+	ByLabel,
+	BySite
+} FeedType;
 
+@interface FeedParser : BaseParser {
 }
+
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type;
+-(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type forString:(NSString*)string;
 
 @end
