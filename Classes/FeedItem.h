@@ -15,7 +15,7 @@
 - (id) initWithTitle:(NSString*)theTitle forIsLabel:(BOOL)islabel;
 
 @property BOOL isLabel;
-@property(nonatomic, retain) NSString* title;
-@property(nonatomic, retain) NSMutableArray* sites;
+@property(nonatomic, copy) NSString* title;
+@property(nonatomic, copy) NSMutableArray* sites;
 
 @end
