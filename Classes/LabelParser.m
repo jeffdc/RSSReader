@@ -52,7 +52,7 @@
 			// found a label
 			NSString* label = [things objectAtIndex:[things count] - 1];
 
-			FeedItem* item = [[FeedItem alloc] initWithTitle:label isLabel:YES];
+			FeedItem* item = [[FeedItem alloc] initWithTitle:label forIsLabel:YES];
 			[parsedData setValue:item forKey:label];
 			[item release];
 			

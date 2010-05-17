@@ -7,7 +7,7 @@
 //
 
 #import "BaseParser.h"
-#import "Site.h" // Should these be in .m?
+#import "Site.h" // Should these be in .m? --JC - not needed since .m includes this file.
 #import "FeedItem.h"
 #import "Entry.h"
 

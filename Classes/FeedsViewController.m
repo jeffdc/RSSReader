@@ -23,9 +23,7 @@
 }
 
 -(void) getXml {
-	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/reader/atom/user/-/label/%@", self.title]];
-	FeedParser* fp = [[FeedParser alloc] initWithDelegate:self];
-	fp.url = url;
+	FeedParser* fp = [[FeedParser alloc] initWithDelegate:self forFeedType:ByLabel forString:self.title];
 	[fp parse];
 	[fp release];
 	
