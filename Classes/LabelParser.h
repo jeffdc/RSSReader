@@ -9,11 +9,11 @@
 #import "BaseParser.h"
 
 @interface LabelParser : BaseParser {
-	bool isId;
+	BOOL isId;
 	NSMutableString* term;
 }
 
-@property bool isId;
+@property BOOL isId;
 @property(nonatomic, retain) NSMutableString* term;
 
 @end

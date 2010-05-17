@@ -14,7 +14,6 @@
 @synthesize isId, term;
 
 -(void) dealloc {
-	[term release];
 	[super dealloc];
 }
 
@@ -66,6 +65,8 @@
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
 	[self.delegate parsingComplete:[NSDictionary dictionaryWithDictionary:parsedData] parser:self];
+	[term release];
+	term = nil; ///??????????
 }
 
 @end

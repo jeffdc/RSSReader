@@ -16,13 +16,13 @@
 	NSDictionary* labels;
 	NSDictionary* starred;
 	NSDictionary* feeds;
-	bool foundTitle;
+	BOOL foundTitle;
 	FeedsViewController* feedsVC;
 	EntriesViewController* entriesVC;
 	
 	@private 
-	bool isEntry;
-	bool isLabel;
+	BOOL isEntry;
+	BOOL isLabel;
 	int parserCount;
 	NSMutableDictionary* tableData;
 }
@@ -34,7 +34,7 @@
 @property (nonatomic, retain) NSMutableDictionary* tableData;
 @property (nonatomic, retain) IBOutlet FeedsViewController *feedsVC;
 @property (nonatomic, retain) IBOutlet EntriesViewController *entriesVC;
-@property bool foundTitle;
-@property bool isEntry;
-@property bool isLabel;
+@property BOOL foundTitle;
+@property BOOL isEntry;
+@property BOOL isLabel;
 @end

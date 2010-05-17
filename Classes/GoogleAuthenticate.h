@@ -17,7 +17,7 @@
 	NSString *userName;
 	NSString *password;
 	NSString *SID;
-	bool authenticated;
+	BOOL authenticated;
 	NSString *failureReason;
 	NSString *failureDescription;
 	
@@ -35,7 +35,7 @@
 @property(nonatomic, retain) NSString *userName;
 @property(nonatomic, retain) NSString *password;
 @property(nonatomic, retain) NSString *SID;
-@property bool authenticated;
+@property BOOL authenticated;
 @property(nonatomic, retain) NSString *failureReason;
 @property(nonatomic, retain) NSString *failureDescription;
 @property(nonatomic, retain) NSMutableData *responseData;

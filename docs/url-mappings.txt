@@ -1,0 +1,51 @@
+
+The Parser classes will have init params that calculate a mapping to the correct Google Reader URL. 
+
+A list of all the URL mappings that we will support in the RSSReader:
+
+List of Labels - LabelParser
+	http://www.google.com/reader/api/0/tag/list
+
+
+Feeds - FeedParser
+
+Starred
+	http://www.google.com/reader/atom/user/-/state/com.google/starred
+	
+All
+	http://www.google.com/reader/atom/user/-/state/com.google/reading-list
+
+Unread
+???? - not sure if this does what we expect
+	http://www.google.com/reader/atom/user/-/state/com.google/fresh
+	-- or --
+	http://www.google.com/reader/atom/user/-/state/com.google/reading-list?xt=user/-/state/com.google/read
+
+Read
+	http://www.google.com/reader/atom/user/-/state/com.google/read
+	
+Kept-Unread
+	http://www.google.com/reader/atom/user/-/state/com.google/kept-unread
+	
+Public
+	http://www.google.com/reader/atom/user/-/state/com.google/broadcast
+
+By Label
+	http://www.google.com/reader/atom/user/-/label/{label}
+
+By Site	
+	http://www.google.com/reader/atom/feed/{url of site's feed}
+	
+Any of the URL's of the form 
+	http://www.google.com/reader/atom/
+can have GET parameters passed to them. The ones that we care about are:
+n - Number of items returns in a set of items (default 20)
+r - order - By default, items starts now, and go back time. You can change that by specifying this key to the 
+	value o (default value is d)
+xt - exclude_target	- another set of items suffix, to be excluded from the query. For exemple, you can query all 
+	items from a feed that are not flagged as read. This value start with feed/ or user/, not with !http:// or www
+c -	continuation a - string used for continuation process. Each feed return not all items, but only a certain number 
+	of items. You'll find in the atom feed (under the name gr:continuation) a string called continuation. 
+	Just add that string as argument for this parameter, and you'll retrieve next items.
+
+This information was gleaned from: http://code.google.com/p/pyrfeed/wiki/GoogleReaderAPI

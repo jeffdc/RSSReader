@@ -18,7 +18,7 @@
 -(void) parse;
 -(void) startParsing;
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate url:(NSURL*)theUrl;
--(bool) isHtml:(NSString*)elementName aParser:(NSXMLParser*)parser;
+-(BOOL) isHtml:(NSString*)elementName aParser:(NSXMLParser*)parser;
 
 @property(assign) id<ParserDelegate> delegate;
 @property(nonatomic, retain) NSURL* url;
