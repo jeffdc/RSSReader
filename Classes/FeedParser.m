@@ -21,14 +21,27 @@ static NSString* FEEDTOURL[] = {
 
 @implementation FeedParser
 
-@synthesize currentEntry, starred, starredFeedItem, starredEntries;
+@synthesize currentEntry, starredEntries, starred, starredFeedItem, linkAttributeDict;
 
--(void) dealloc {
+- (void) dealloc {
+	[currentEntryTitle release];
+	[currentEntryAuthor release];
+	[currentEntryHTML release];
+	[currentEntryUpdatedDate release];
+	[currentEntry release];
+	[starred release];
+	[starredEntries release];
+	[starredFeedItem release];
 	[super dealloc];
 }
 
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type {
 	NSURL* theUrl = [NSURL URLWithString:FEEDTOURL[type]];
+	currentEntryTitle = [[NSMutableString alloc] init];
+	currentEntryAuthor = [[NSMutableString alloc] init];
+	currentEntryHTML = [[NSMutableString alloc] init];
+	currentEntryUpdatedDate = [[NSMutableString alloc] init];
+	self.currentEntry = [[NSMutableString alloc] init];
 	return [super initWithDelegate:theDelegate url:theUrl];
 }
 
@@ -47,8 +60,6 @@ static NSString* FEEDTOURL[] = {
 	foundEntryAuthor = NO;
 	foundEntryURL = NO;
 	foundEntryHTML = NO;
-
-	// reset strings??? TODO
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
@@ -72,7 +83,7 @@ static NSString* FEEDTOURL[] = {
 		}
 		if ([elementName isEqualToString:@"link"] && isEntry) {
 			foundEntryURL = YES;
-			linkAttributeDict = [NSDictionary dictionaryWithDictionary:attributeDict];
+			self.linkAttributeDict = [NSDictionary dictionaryWithDictionary:attributeDict];
 		}
 		if ([elementName isEqualToString:@"updated"]) {
 			foundEntryUpdatedDate = YES;
@@ -84,6 +95,7 @@ static NSString* FEEDTOURL[] = {
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+	
 	if (foundEntryTitle) {
 		[currentEntryTitle appendString:string];	
 	}
@@ -101,66 +113,62 @@ static NSString* FEEDTOURL[] = {
 	}
 }
 
--(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if (!currentEntry) { // Create the Entry object if it's null.
-		currentEntry = [[Entry alloc]init];
-	}
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
+				qualifiedName:(NSString *)qName {
+	
 	if (foundEntryTitle) {
 		currentEntry.title = currentEntryTitle;
 		foundEntryTitle = NO;
-		currentEntryTitle = nil;
+		[currentEntryTitle setString:@""];
 	}
 	if (foundSiteTitle) {
 		currentEntry.siteName = currentSiteTitle;
 		foundSiteTitle = NO;
-		currentSiteTitle = nil;
+		[currentSiteTitle setString:@""];
 	}
 	if (foundEntryAuthor) {
 		currentEntry.author = currentEntryAuthor;
 		foundEntryAuthor = NO;
-		currentEntryAuthor = nil;
+		[currentEntryAuthor setString:@""];
 	}
 	if (foundEntryURL) {
-		currentEntry.url = [NSURL URLWithString:[linkAttributeDict objectForKey:@"href"]]; // Does the key need to be cast to a string?
-																						   // String has to conform to RFC 2396...
+		currentEntry.url = [NSURL URLWithString:[linkAttributeDict objectForKey:@"href"]];
+		foundEntryURL = NO;
+		[linkAttributeDict release];
 	}
 	if (foundEntryHTML) {
-		currentEntry.html = currentEntryHTML; // Unsure as to how we'll display the HTML on a UIWebView.
-											  // NSData doesn't seem to be what we need to use, so it's a NSString for now.
+		currentEntry.html = currentEntryHTML;
 		foundEntryHTML = NO;
-		currentEntryHTML = nil;
+		[currentEntryHTML setString:@""];
 	}
 	if (foundEntryUpdatedDate) {
 		NSDateFormatter *df = [[NSDateFormatter alloc] init];
-		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss z"]; // Can I set the format to something different than what Google Reader uses?
-													// See this site for formatting: http://unicode.org/reports/tr35/#Date_Format_Patterns
+		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss z"]; 
 		NSDate *updatedDate = [df dateFromString: currentEntryUpdatedDate];
 		currentEntry.date = updatedDate;
 		foundEntryUpdatedDate = NO;
 		[df release];
-		updatedDate = nil;
-		currentEntryUpdatedDate = nil;
+		[currentEntryUpdatedDate setString:@""];
 	}
 	if ([elementName isEqualToString:@"source"]) {
 		inEntrySource = NO;
 	}
 	if (!starredEntries) {
-		starredEntries = [[NSMutableArray alloc]init];
+		self.starredEntries = [[NSMutableArray alloc]init];
 	}
 	if ([elementName isEqualToString:@"entry"]) {
 		[starredEntries addObject:currentEntry];
-		currentEntry = nil; // Will this cause it to create a new Entry object for each entry? 
-							//How do I safely nil this out so it's ready for the next entry?
 		isEntry = NO;
 	}
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	starred = [[Site alloc]initWithName:@"starred" URL:[NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"] siteEntries:starredEntries];
-	self.starredFeedItem = [[FeedItem alloc]initWithTitle:@"starredFeedItem" forIsLabel:NO];
+	self.starred = [[Site alloc]initWithName:@"starred" 
+						URL:[NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"] 
+						siteEntries:starredEntries];
+	self.starredFeedItem = [[FeedItem alloc] initWithTitle:@"starredFeedItem" forIsLabel:NO];
 	[starredFeedItem.sites addObject:starred];
-	
-	[self.delegate parsingComplete:[NSDictionary dictionaryWithObject:starredFeedItem forKey:@"Starred"] parser:self];
+	[self.delegate parsingComplete:[NSDictionary dictionaryWithObject:starredFeedItem forKey:@"starred"] parser:self];
 }
 
 @end

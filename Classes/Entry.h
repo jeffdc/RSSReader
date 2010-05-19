@@ -18,7 +18,7 @@
 }
 
 - (id) initWithTitle:(NSString*)entryTitle entryDate:(NSDate*)entryDate entryAuthor:(NSString*)entryAuthor 
-		   entryHTML:(NSData*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL;
+		   entryHTML:(NSString*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL;
 
 @property (nonatomic, copy) NSString* title;
 @property (nonatomic, copy) NSDate* date;
