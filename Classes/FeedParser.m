@@ -42,7 +42,7 @@ static NSString* FEEDTOURL[] = {
 	currentEntryAuthor = [[NSMutableString alloc] init];
 	currentEntryHTML = [[NSMutableString alloc] init];
 	currentEntryUpdatedDate = [[NSMutableString alloc] init];
-	self.currentEntry = [[NSMutableString alloc] init];
+	self.currentEntry = [[Entry alloc] init];
 	return [super initWithDelegate:theDelegate url:theUrl];
 }
 
@@ -86,7 +86,7 @@ static NSString* FEEDTOURL[] = {
 			foundEntryURL = YES;
 			self.linkAttributeDict = [NSDictionary dictionaryWithDictionary:attributeDict];
 		}
-		if ([elementName isEqualToString:@"updated"]) {
+		if ([elementName isEqualToString:@"updated"] && isEntry) {
 			foundEntryUpdatedDate = YES;
 		}
 		if ([elementName isEqualToString:@"summary"] && isEntry) {
