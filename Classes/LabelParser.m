@@ -8,6 +8,7 @@
 
 #import "LabelParser.h"
 #import "FeedItem.h"
+#import "ParserDelegate.h"
 
 @implementation LabelParser
 

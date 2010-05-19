@@ -7,6 +7,7 @@
 //
 
 #import "FeedParser.h"
+#import "ParserDelegate.h"
 
 static NSString* FEEDTOURL[] = {
 	@"http://www.google.com/reader/atom/user/-/state/com.google/starred",
