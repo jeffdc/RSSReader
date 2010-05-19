@@ -7,6 +7,7 @@
 //
 
 #import "StarredParser.h"
+#import "ParserDelegate.h";
 
 @implementation StarredParser
 
