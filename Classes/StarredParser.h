@@ -35,4 +35,10 @@
 	NSMutableString* currentEntryUpdatedDate;
 }
 
+@property (nonatomic, retain) NSDictionary* linkAttributeDict;
+@property (nonatomic, retain) Entry* currentEntry;
+@property (nonatomic, retain) Site* starred;
+@property (nonatomic, retain) FeedItem* starredFeedItem;
+@property (nonatomic, retain) NSMutableArray* starredEntries;
+
 @end
