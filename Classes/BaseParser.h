@@ -27,6 +27,3 @@
 
 @end
 
-@protocol ParserDelegate
--(void) parsingComplete:(NSDictionary*) data parser:(BaseParser*)theParser;
-@end

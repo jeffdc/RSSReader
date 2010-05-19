@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseGoogleViewController.h"
-#import "BaseParser.h"
+#import "ParserDelegate.h"
 
 @interface FeedsViewController : BaseGoogleViewController<ParserDelegate> {
 	NSDictionary* tableData;

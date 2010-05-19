@@ -55,6 +55,7 @@
 		1F01B2A31197A33000FA45E0 /* FeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedParser.m; sourceTree = "<group>"; };
 		1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGoogleViewController.h; sourceTree = "<group>"; };
 		1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGoogleViewController.m; sourceTree = "<group>"; };
+		1F453C3711A0E63200339DC2 /* ParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserDelegate.h; sourceTree = "<group>"; };
 		1F57E06B118F602400947E6D /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
 		1F57E06C118F602400947E6D /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
 		1F57E09C118F788800947E6D /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				1F57E16E1191020100947E6D /* LabelParser.m */,
 				087C3AC31192087900F12284 /* StarredParser.h */,
 				087C3AC41192087900F12284 /* StarredParser.m */,
+				1F453C3711A0E63200339DC2 /* ParserDelegate.h */,
 			);
 			name = XML;
 			sourceTree = "<group>";
