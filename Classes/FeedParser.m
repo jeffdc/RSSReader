@@ -22,7 +22,7 @@ static NSString* FEEDTOURL[] = {
 
 @implementation FeedParser
 
-@synthesize currentEntry, starredEntries, starred, starredFeedItem, linkAttributeDict;
+@synthesize currentEntry, entries, site, feedItem, linkAttributeDict, feedType;
 
 - (void) dealloc {
 	[currentEntryTitle release];
@@ -30,13 +30,14 @@ static NSString* FEEDTOURL[] = {
 	[currentEntryHTML release];
 	[currentEntryUpdatedDate release];
 	[currentEntry release];
-	[starred release];
-	[starredEntries release];
-	[starredFeedItem release];
+	[site release];
+	[entries release];
+	[feedItem release];
 	[super dealloc];
 }
 
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type {
+	self.feedType = type;
 	NSURL* theUrl = [NSURL URLWithString:FEEDTOURL[type]];
 	currentEntryTitle = [[NSMutableString alloc] init];
 	currentEntryAuthor = [[NSMutableString alloc] init];
@@ -154,22 +155,22 @@ static NSString* FEEDTOURL[] = {
 	if ([elementName isEqualToString:@"source"]) {
 		inEntrySource = NO;
 	}
-	if (!starredEntries) {
-		self.starredEntries = [[NSMutableArray alloc]init];
+	if (!entries) {
+		self.entries = [[NSMutableArray alloc]init];
 	}
 	if ([elementName isEqualToString:@"entry"]) {
-		[starredEntries addObject:currentEntry];
+		[entries addObject:currentEntry];
 		isEntry = NO;
 	}
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	self.starred = [[Site alloc]initWithName:@"starred" 
+	self.site = [[Site alloc]initWithName:@"starred" 
 						URL:[NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"] 
-						siteEntries:starredEntries];
-	self.starredFeedItem = [[FeedItem alloc] initWithTitle:@"starredFeedItem" forIsLabel:NO];
-	[starredFeedItem.sites addObject:starred];
-	[self.delegate parsingComplete:[NSDictionary dictionaryWithObject:starredFeedItem forKey:@"starred"] parser:self];
+						siteEntries:entries];
+	self.feedItem = [[FeedItem alloc] initWithTitle:@"starredFeedItem" forIsLabel:NO];
+	[feedItem.sites addObject:site];
+	[self.delegate parsingComplete:[NSDictionary dictionaryWithObject:feedItem forKey:@"starred"] parser:self];
 }
 
 @end

@@ -25,12 +25,13 @@ typedef enum {
 @interface FeedParser : BaseParser {
 	
 	Entry* currentEntry;
-	Site* starred;
-	FeedItem* starredFeedItem;
-	NSMutableArray* starredEntries;
+	Site* site;
+	FeedItem* feedItem;
+	NSMutableArray* entries;
+	FeedType feedType;
 	
 	BOOL isEntry;
-	BOOL inEntrySource;
+	BOOL inEntrySource;	
 	BOOL foundEntryTitle;
 	BOOL foundSiteTitle;
 	BOOL foundEntryAuthor;
@@ -48,9 +49,10 @@ typedef enum {
 
 @property (nonatomic, retain) NSDictionary* linkAttributeDict;
 @property (nonatomic, retain) Entry* currentEntry;
-@property (nonatomic, retain) Site* starred;
-@property (nonatomic, retain) FeedItem* starredFeedItem;
-@property (nonatomic, retain) NSMutableArray* starredEntries;
+@property (nonatomic, retain) Site* site;
+@property (nonatomic, retain) FeedItem* feedItem;
+@property (nonatomic, retain) NSMutableArray* entries;
+@property FeedType feedType;
 
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type;
 -(id) initWithDelegate:(id<ParserDelegate>) theDelegate forFeedType:(FeedType)type forString:(NSString*)string;

@@ -10,10 +10,12 @@
 #import "AuthenticationViewController.h"
 #import "FeedItem.h"
 #import "LabelParser.h"
+#import "FeedParser.h"
+#import "ParserDelegate.h"
 #import "FeedsViewController.h"
 #import "EntriesViewController.h"
 
-static int const TOTAL_PARSERS = 1;
+static int const TOTAL_PARSERS = 3;
 
 @interface RootViewController ()
 -(void)getXML;
@@ -36,6 +38,14 @@ static int const TOTAL_PARSERS = 1;
 	LabelParser* lp = [[LabelParser alloc] initWithDelegate:self];
 	[lp parse];
 	[lp release];
+	
+	FeedParser* sfp = [[FeedParser alloc] initWithDelegate:self forFeedType:Starred];
+	[sfp parse];
+	[sfp release];
+	
+	FeedParser* fp = [[FeedParser alloc] initWithDelegate:self forFeedType:Unread];
+	[fp parse];
+	[fp release];
 }
 
 -(void)populateTableData {
@@ -54,14 +64,19 @@ static int const TOTAL_PARSERS = 1;
 		++parserCount;
 	}
 	if ([theParser isKindOfClass:[LabelParser class]]) {
-			self.labels = [NSMutableDictionary dictionaryWithDictionary:data];
+		self.labels = [NSMutableDictionary dictionaryWithDictionary:data];
 	}
-//	if ([theParser isKindOfClass:[StarredParser class]]) {
-//		self.starred = [NSMutableDictionary dictionaryWithDictionary:data];
-//	}
-//	if ([theParser isKindOfClass:[FeedsParser class]]) {
-//		self.feeds = [NSMutableDictionary dictionaryWithDictionary:data];
-//	}
+	if ([theParser isKindOfClass:[FeedParser class]]) {
+		if ([(FeedParser*)theParser feedType] == Starred) {
+			self.starred = [NSMutableDictionary dictionaryWithDictionary:data];
+		} else { 
+			if (!feeds) {
+				self.feeds = [[NSMutableDictionary alloc] init];
+			}
+			[feeds addEntriesFromDictionary:data];
+		}
+
+	}
 	if (parserCount == TOTAL_PARSERS) {
 		parserCount = 0;
 		[self populateTableData];

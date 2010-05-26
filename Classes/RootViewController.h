@@ -15,7 +15,7 @@
 	NSMutableData* mainXMLData;
 	NSDictionary* labels;
 	NSDictionary* starred;
-	NSDictionary* feeds;
+	NSMutableDictionary* feeds;
 	BOOL foundTitle;
 	FeedsViewController* feedsVC;
 	EntriesViewController* entriesVC;
@@ -29,7 +29,7 @@
 
 @property (nonatomic, retain) NSDictionary *labels;
 @property (nonatomic, retain) NSDictionary *starred;
-@property (nonatomic, retain) NSDictionary *feeds;
+@property (nonatomic, retain) NSMutableDictionary *feeds;
 @property (nonatomic, retain) NSMutableData *mainXMLData;
 @property (nonatomic, retain) NSMutableDictionary* tableData;
 @property (nonatomic, retain) IBOutlet FeedsViewController *feedsVC;
