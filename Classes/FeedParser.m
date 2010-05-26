@@ -136,7 +136,6 @@ static NSString* FEEDTOURL[] = {
 	if (foundEntryURL) {
 		currentEntry.url = [NSURL URLWithString:[linkAttributeDict objectForKey:@"href"]];
 		foundEntryURL = NO;
-		[linkAttributeDict release];
 	}
 	if (foundEntryHTML) {
 		currentEntry.html = currentEntryHTML;

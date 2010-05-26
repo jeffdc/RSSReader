@@ -16,6 +16,6 @@
 
 @property BOOL isLabel;
 @property(nonatomic, copy) NSString* title;
-@property(nonatomic, copy) NSMutableArray* sites;
+@property(nonatomic, retain) NSMutableArray* sites;
 
 @end

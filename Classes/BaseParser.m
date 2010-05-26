@@ -35,11 +35,11 @@
 }
 
 -(void) parse {
-	//NSLog(@"parse");
-//	// make sure the proper cookie is set
-//	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
-//		NSLog(@"No google cookie set!");
-//	}
+	NSLog(@"parse");
+	// make sure the proper cookie is set
+	if (![[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
+		NSLog(@"No google cookie set!");
+	}
 	
 	NSURLRequest *request = [[NSURLRequest alloc]initWithURL:self.url];
 	
