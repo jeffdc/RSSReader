@@ -6,6 +6,8 @@
 //  Copyright 2010 nothoo. All rights reserved.
 //
 
+#import "Entry.h"
+
 @interface Feed : NSObject {
 	NSString* title;
 	NSURL* url;

@@ -39,4 +39,8 @@
 	//TODO
 }
 
+- (BOOL) addLabel:(NSString*)label {
+	//TODO
+}
+
 @end

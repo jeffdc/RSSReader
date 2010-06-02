@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "AuthenticationViewController.h"
-#import "FeedItem.h"
 #import "LabelParser.h"
 #import "FeedParser.h"
 #import "ParserDelegate.h"
@@ -130,15 +129,16 @@ static int const TOTAL_PARSERS = 3;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	FeedItem* item = [tableData objectForKey:[[tableData allKeys] objectAtIndex:indexPath.row]];
-	if (item.isLabel) {
-		feedsVC.tableData = tableData;
-		feedsVC.title = item.title;
-		[[self navigationController] pushViewController:feedsVC animated:YES];
-	} else {
-		entriesVC.data = tableData;
-		[[self navigationController] pushViewController:entriesVC animated:YES];
-	}
+	//TODO
+//	FeedItem* item = [tableData objectForKey:[[tableData allKeys] objectAtIndex:indexPath.row]];
+//	if (item.isLabel) {
+//		feedsVC.tableData = tableData;
+//		feedsVC.title = item.title;
+//		[[self navigationController] pushViewController:feedsVC animated:YES];
+//	} else {
+//		entriesVC.data = tableData;
+//		[[self navigationController] pushViewController:entriesVC animated:YES];
+//	}
 }
 
 - (void)didReceiveMemoryWarning {

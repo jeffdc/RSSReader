@@ -7,7 +7,7 @@
 //
 
 #import "BaseParser.h"
-#import "Site.h"
+#import "Feed.h"
 #import "FeedItem.h"
 #import "Entry.h"
 
@@ -25,7 +25,7 @@ typedef enum {
 @interface FeedParser : BaseParser {
 	
 	Entry* currentEntry;
-	Site* site;
+	Feed* site;
 	FeedItem* feedItem;
 	NSMutableArray* entries;
 	FeedType feedType;
@@ -49,7 +49,7 @@ typedef enum {
 
 @property (nonatomic, retain) NSDictionary* linkAttributeDict;
 @property (nonatomic, retain) Entry* currentEntry;
-@property (nonatomic, retain) Site* site;
+@property (nonatomic, retain) Feed* site;
 @property (nonatomic, retain) FeedItem* feedItem;
 @property (nonatomic, retain) NSMutableArray* entries;
 @property FeedType feedType;

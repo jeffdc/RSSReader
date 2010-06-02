@@ -164,7 +164,7 @@ static NSString* FEEDTOURL[] = {
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
-	self.site = [[Site alloc]initWithName:@"starred" 
+	self.site = [[Feed alloc]initWithTitle:@"starred" 
 						URL:[NSURL URLWithString:@"http://www.google.com/reader/atom/user/-/state/com.google/starred"] 
 						siteEntries:entries];
 	self.feedItem = [[FeedItem alloc] initWithTitle:@"starredFeedItem" forIsLabel:NO];
