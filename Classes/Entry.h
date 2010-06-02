@@ -14,11 +14,9 @@
 	NSString* html;
 	NSString* siteName;
 	NSURL* url;
-	//NSURL* siteURL; //null if not a starred item, because the entry can use it's site.title ... needed???
+	BOOL starred;
+	BOOL read;
 }
-
-- (id) initWithTitle:(NSString*)entryTitle entryDate:(NSDate*)entryDate entryAuthor:(NSString*)entryAuthor 
-		   entryHTML:(NSString*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL;
 
 @property (nonatomic, copy) NSString* title;
 @property (nonatomic, copy) NSDate* date;
@@ -26,5 +24,6 @@
 @property (nonatomic, copy) NSString* html;
 @property (nonatomic, copy) NSString* siteName;
 @property (nonatomic, copy) NSURL* url;
-
+@property BOOL starred;
+@property BOOL read;
 @end

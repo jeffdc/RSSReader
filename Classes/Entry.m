@@ -11,25 +11,16 @@
 
 @implementation Entry
 
-@synthesize title, date, author, html, siteName, url;
-
-- (id) initWithTitle:(NSString*)entryTitle entryDate:(NSDate*)entryDate entryAuthor:(NSString*)entryAuthor 
-		   entryHTML:(NSString*)entryHTML entrySiteName:(NSString*)entrySiteName entryURL:(NSURL*)entryURL{
-	self = [super init];
-	
-	if (nil != self) {
-		self.title = entryTitle;
-		self.date = entryDate;
-		self.author = entryAuthor;
-		self.html = entryHTML;
-		self.siteName = entrySiteName;
-		self.url = entryURL;
-	}
-	
-	return self;
-}
+@synthesize title, date, author, html, siteName, url, starred, read;
 
 - (void) dealloc {
+	[title release];
+	[date release];
+	[author release];
+	[html release];
+	[siteName release];
+	[url release];
+	
 	[super dealloc];
 }
 

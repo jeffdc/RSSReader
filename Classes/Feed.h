@@ -6,17 +6,21 @@
 //  Copyright 2010 nothoo. All rights reserved.
 //
 
-@interface Site : NSObject {
+@interface Feed : NSObject {
 	NSString* title;
 	NSURL* url;
 	NSMutableArray* entries;
+	NSMutableArray* labels;
 }
 
-- (id) initWithName:(NSString*)name URL:(NSURL*)URL siteEntries:(NSMutableArray*)siteEntries;
+- (id) initWithTitle:(NSString*)name URL:(NSURL*)URL;
+- (BOOL) addEntry:(Entry*)entry;
+- (BOOL) addLabel:(NSString*)label;
 
 @property (nonatomic, copy) NSString* title;
 @property (nonatomic, copy) NSURL* url;
 @property (nonatomic, copy) NSMutableArray* entries;
+@property (nonatomic, copy) NSMutableArray* labels;
 
 @end
 

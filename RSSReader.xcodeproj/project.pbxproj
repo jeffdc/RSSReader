@@ -19,14 +19,14 @@
 		1F01B2171196305B00FA45E0 /* EntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F01B2151196305B00FA45E0 /* EntriesViewController.xib */; };
 		1F01B2A41197A33000FA45E0 /* FeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F01B2A31197A33000FA45E0 /* FeedParser.m */; };
 		1F41D53111813DE700756AB5 /* BaseGoogleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */; };
-		1F57E06D118F602400947E6D /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E06C118F602400947E6D /* FeedItem.m */; };
 		1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E09D118F788800947E6D /* PreferencesViewController.m */; };
 		1F57E0A3118F7A2400947E6D /* PreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F57E0A2118F7A2400947E6D /* PreferencesView.xib */; };
-		1F57E1691191010300947E6D /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E1681191010300947E6D /* Site.m */; };
+		1F57E1691191010300947E6D /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E1681191010300947E6D /* Feed.m */; };
 		1F57E16C1191015C00947E6D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E16B1191015C00947E6D /* Entry.m */; };
 		1F57E16F1191020100947E6D /* LabelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E16E1191020100947E6D /* LabelParser.m */; };
 		1F57E1A911910AC700947E6D /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57E1A811910AC700947E6D /* BaseParser.m */; };
 		1FA8019C116ECBB40050E62B /* GoogleAuthenticate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */; };
+		1FF5CE7D11B5EDCB0031B47E /* FeedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5CE7C11B5EDCB0031B47E /* FeedData.m */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
@@ -53,14 +53,12 @@
 		1F41D52F11813DE700756AB5 /* BaseGoogleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGoogleViewController.h; sourceTree = "<group>"; };
 		1F41D53011813DE700756AB5 /* BaseGoogleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGoogleViewController.m; sourceTree = "<group>"; };
 		1F453C3711A0E63200339DC2 /* ParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserDelegate.h; sourceTree = "<group>"; };
-		1F57E06B118F602400947E6D /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
-		1F57E06C118F602400947E6D /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
 		1F57E09C118F788800947E6D /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		1F57E09D118F788800947E6D /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		1F57E0A2118F7A2400947E6D /* PreferencesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesView.xib; sourceTree = "<group>"; };
 		1F57E1231190AC6A00947E6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		1F57E1671191010300947E6D /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
-		1F57E1681191010300947E6D /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
+		1F57E1671191010300947E6D /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		1F57E1681191010300947E6D /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		1F57E16A1191015C00947E6D /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		1F57E16B1191015C00947E6D /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		1F57E16D1191020100947E6D /* LabelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelParser.h; sourceTree = "<group>"; };
@@ -69,6 +67,8 @@
 		1F57E1A811910AC700947E6D /* BaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseParser.m; sourceTree = "<group>"; };
 		1FA8019A116ECBB40050E62B /* GoogleAuthenticate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAuthenticate.h; sourceTree = "<group>"; };
 		1FA8019B116ECBB40050E62B /* GoogleAuthenticate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthenticate.m; sourceTree = "<group>"; };
+		1FF5CE7B11B5EDCB0031B47E /* FeedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedData.h; sourceTree = "<group>"; };
+		1FF5CE7C11B5EDCB0031B47E /* FeedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedData.m; sourceTree = "<group>"; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* RSSReader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSReader_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -117,12 +117,12 @@
 		1F57E1621190FFA300947E6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F57E06B118F602400947E6D /* FeedItem.h */,
-				1F57E06C118F602400947E6D /* FeedItem.m */,
-				1F57E1671191010300947E6D /* Site.h */,
-				1F57E1681191010300947E6D /* Site.m */,
+				1F57E1671191010300947E6D /* Feed.h */,
+				1F57E1681191010300947E6D /* Feed.m */,
 				1F57E16A1191015C00947E6D /* Entry.h */,
 				1F57E16B1191015C00947E6D /* Entry.m */,
+				1FF5CE7B11B5EDCB0031B47E /* FeedData.h */,
+				1FF5CE7C11B5EDCB0031B47E /* FeedData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -278,15 +278,15 @@
 				086F086E1153FB1700D12F62 /* AuthenticationViewController.m in Sources */,
 				1FA8019C116ECBB40050E62B /* GoogleAuthenticate.m in Sources */,
 				1F41D53111813DE700756AB5 /* BaseGoogleViewController.m in Sources */,
-				1F57E06D118F602400947E6D /* FeedItem.m in Sources */,
 				1F57E09F118F788800947E6D /* PreferencesViewController.m in Sources */,
-				1F57E1691191010300947E6D /* Site.m in Sources */,
+				1F57E1691191010300947E6D /* Feed.m in Sources */,
 				1F57E16C1191015C00947E6D /* Entry.m in Sources */,
 				1F57E16F1191020100947E6D /* LabelParser.m in Sources */,
 				1F57E1A911910AC700947E6D /* BaseParser.m in Sources */,
 				1F01B2111196301000FA45E0 /* FeedsViewController.m in Sources */,
 				1F01B2161196305B00FA45E0 /* EntriesViewController.m in Sources */,
 				1F01B2A41197A33000FA45E0 /* FeedParser.m in Sources */,
+				1FF5CE7D11B5EDCB0031B47E /* FeedData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
